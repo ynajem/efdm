@@ -1,4 +1,12 @@
-@extends('layout')
+@extends('layouts.admin')
+
+@section('title','This is the test page')
+
 @section('content')
-  <h1>Hello from {{ $name }}</h1>
+<section class="content">
+  @include('tests.test1')
+</section>
+@endsection
+
+@section('scripts')
 @endsection

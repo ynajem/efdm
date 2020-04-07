@@ -1,12 +1,47 @@
-td,
-th {
-    vertical-align: middle !important;
-    text-align: center !important;
+button,
+a {
+    outline: none;
 }
 
-td > ul,
-td > ol,
-td > p,
-td > pre {
+.hr-dashed {
+    border-top: 1px dashed #e7eaec;
+    color: #fff;
+    background-color: #fff;
+    height: 1px;
+    margin: 20px 0;
+}
+
+.hr-fancy {
+    display: block;
+    height: 8px;
+    background: url(../img/hr.png) repeat-x;
+    margin: 15px 0;
+    border: 0;
+}
+
+path {
+    /* Inherit color from svg parent */
+    fill: currentColor;
+}
+
+.center {
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.custom-select {
+    box-shadow: none;
+}
+
+.select2-container--bootstrap4 .select2-selection--multiple {
+    padding: 2px;
+}
+
+.event > p {
+    margin: 0 !important;
+}
+
+.card-footer > nav > ul {
     margin-bottom: 0;
 }

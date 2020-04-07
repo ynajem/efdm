@@ -1,21 +1,28 @@
 <?php
 
-function options($array,$default=FALSE){
+function options($options, $default = null)
+{
   $r = array();
-  foreach ($array as $key => $value) {
-    $selected = ($key==$default) ? " selected" : "";
+  foreach ($options as $key => $value) {
+    $selected = ($key == $default) ? " selected" : "";
     $r[] = "<option value=\"{$key}\"{$selected}>{$value}</option>";
   }
-  return join($r,'');
+  return join($r, '\n');
+}
+
+function getShift($time = False)
+{
+  $shift = 3;
+  if ($time <= "08:00" and $time > "14:00") {
+    $shift = 1;
+  } elseif ($time >= "14:00" and $time < "21:00") {
+    $shift = 2;
+  }
+  return $shift;
 }
 
 function markdown($text)
 {
   $parsedown = new Parsedown();
   return $parsedown->setBreaksEnabled(true)->text($text);
-}
-
-function esas($shift,$team){
-  $all = [$shift->chefSalle,$shift->supervisor,$shift->chef,$shift->esa1,$shift->esa2,$shift->esa3,$shift->renfort1,$shift->renfort2];
-  return array_intersect($all,$team);
 }

@@ -38,16 +38,12 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // public function username()
-    // {
-    //     return 'username';
-    // }
-
     public function login()
     {
         $input = request()->all();
 
         if (auth()->attempt(array('username' => $input['username'], 'password' => $input['password']))) {
+            // return $input;
             return redirect()->route('home');
         } else {
             return redirect()->route('login')

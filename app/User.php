@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password', 'entity_id'
     ];
 
     /**
@@ -37,33 +37,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function events()
-    {
-        return $this->hasMany(Event::class);
-    }
-
     public function entity()
     {
         return $this->belongsTo(Entity::class);
     }
 
-    public function shifts()
-    {
-        return $this->hasMany(Shift::class);
-    }
-
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class)->withTimestamps();
-    }
-
     public function team()
     {
-        return $this->entity->users->pluck('username')->all();
+        return $this->entity->users->pluck('username', 'id')->all();
     }
 
-    public function assignRole($role)
+    public function shifts()
     {
-        $this->roles()->save($role);
+        return $this->belongsToMany(Shift::class)->withPivot('role');
     }
 }

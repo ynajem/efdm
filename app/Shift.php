@@ -6,16 +6,51 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shift extends Model
 {
+    // public $timestamps = false;
     protected $guarded = [];
 
-    public function status($status)
+    public function entity()
     {
-        $this->status = $status;
-        $this->save();
+        return $this->belongsTo(Entity::class);
     }
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class)->withPivot('role');
+    }
+
+    public function added_by()
+    {
+        return $this->belongsTo(User::class, 'addedby');
+    }
+
+    public function super()
+    {
+        return $this->belongsTo(User::class, 'supervisor');
+    }
+
+    public function chef()
+    {
+        return $this->belongsTo(User::class, 'chefSalle');
+    }
+
+    public function chefE()
+    {
+        return $this->users()->where('role', 'chefE')->first();
+    }
+
+    public function esa()
+    {
+        return $this->users()->where('role', 'esa')->get();
+    }
+
+    public function renf()
+    {
+        return $this->users()->where('role', 'renf')->get();
+    }
+
+    public function team()
+    {
+        return $this->users->pluck('username', 'id')->all();
     }
 }

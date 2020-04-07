@@ -13,8 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        /* Register the Parsedown as a singleton service */
-        $this->app->singleton(Parsedown::class);
+        //
     }
 
     /**
@@ -24,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+        //
     }
 }
