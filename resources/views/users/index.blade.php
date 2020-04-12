@@ -1,41 +1,54 @@
 @extends('layouts.admin')
 
-@section('content')
-<div class="row">
-  <div class="col-lg-12">
-    <div class="card">
-      <div class="card-body">
-        <a href="{{ route('users.create') }}" class="btn btn-primary mb-2">Add New User</a>
-        <!-- Pagination -->
-        <div class="float-right">
-          {!! $users->render() !!}
-        </div>
-        <!-- Pagination end -->
-        <table class="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Username</th>
-              <th>Entity</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($users as $user)
-            <tr>
-              <td>{{ $user->id }}</td>
-              <td>{{ $user->username }}</td>
-              <td>{{ $user->entity->label }}</td>
-              <td>{{ $user->email }}</td>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <!-- /.col-md-6 -->
-</div>
-<!-- /.row -->
+@section('styles')
+<link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.css" />
+@stop
 
+@section('content')
+<div class="card">
+  <div class="card-body">
+    <table class="table table-bordered table-hover dataTable" id="users-table" data-order='[[ 2, "asc" ]]' data-page-length='5'>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Username</th>
+          <th>Entity</th>
+          <th>Email</th>
+          <!-- <th>Actions</th> -->
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+@endsection
+
+@section('scripts')
+<!-- <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script> -->
+<script src="/plugins/datatables/jquery.dataTables.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script>
+  $(function() {
+    $("#users-table").DataTable({
+      // processing: true,
+      select: true,
+      serverSide: true,
+      lengthMenu: [5, 10, 15, 20, 50],
+      // pageLength: 5,
+      ajax: "http://efdm/datatables",
+      columns: [{
+          data: "id",
+        }, {
+          data: "username",
+        }, {
+          data: "entity",
+        }, {
+          data: "email",
+        },
+        // {
+        //   name: '<span class="btn btn-primary">Edit</span>',
+        // }
+      ]
+    });
+  });
+</script>
 @endsection

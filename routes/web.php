@@ -19,8 +19,13 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('test', function () {
+    return Auth::id();
     return view('test');
 });
+
+Route::get('/contact-us', 'ContactusController@create')->name('contactus.create');
+Route::post('/contact-us', 'ContactusController@store')->name('contactus.store');
+Route::get('/messages', 'ContactusController@index')->name('contactus.index')->middleware('admin');
 
 Route::resource('users', 'UsersController');
 Route::resource('shifts', 'ShiftController');
@@ -40,3 +45,10 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect(route('login'));
 });
+
+Route::get('profile', 'ProfileController@show')->name('profile.show');
+Route::put('profile', 'ProfileController@update')->name('profile.update');
+Route::get('password', 'ProfileController@password')->name('profile.password');
+Route::put('password', 'ProfileController@passUpdate')->name('profile.passUpdate');
+
+Route::get('datatables', 'UsersController@datatable');

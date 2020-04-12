@@ -1,8 +1,9 @@
 <aside class="main-sidebar sidebar-dark-primary">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
-    <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle" style="opacity: .8">
-    <span class="brand-text font-weight-light">EFDM</span>
+  <a href="/" class="brand-link text-center">
+    <!-- <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle" style="opacity: .8">
+    <span class="brand-text font-weight-light">EFDM</span> -->
+    <span><b>EFDM</b></span>
   </a>
 
   <!-- Sidebar -->
@@ -13,13 +14,15 @@
         <img src="/img/user1.png" class="img-circle">
       </div>
       <div class="info">
-        <a href="#" class="d-block">{{ auth()->user()->firstname." ".auth()->user()->lastname }}</a>
+        <a href="{{ route('profile.show') }}" class="d-block">
+          {{ auth()->user()->fullname() }}
+        </a>
       </div>
     </div>
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
+      <ul class="nav nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
 
         <li class="nav-item has-treevie{{ request()->routeIs('users*') ? ' menu-open' : ''}}">
           <a href="#" class="nav-link{{ request()->routeIs('users*') ? ' active' : ''}}">
@@ -113,7 +116,7 @@
 
         <li class="nav-item has-treevie{{ request()->routeIs('equipements*') ? ' menu-open' : ''}}">
           <a href="#" class="nav-link{{ request()->routeIs('equipements*') ? ' active' : ''}}">
-            <i class="nav-icon fas fa-cogs"></i>
+            <i class="nav-icon fa fa-cogs"></i>
             <p> Equipements HS <i class="right fas fa-angle-left"></i> </p>
           </a>
           <ul class="nav nav-treeview">
@@ -138,12 +141,6 @@
           </ul>
         </li>
 
-        <li class="nav-item">
-          <a href="/logout" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p> Logout <span class="right badge badge-danger">New</span> </p>
-          </a>
-        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

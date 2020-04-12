@@ -30,7 +30,7 @@ class CreateObjetsTable extends Migration
         Schema::create('subobjets', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->foreignId('objet_id')->constrained();
             $table->string('status')->default('active');
         });

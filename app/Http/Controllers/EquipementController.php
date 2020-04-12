@@ -29,7 +29,7 @@ class EquipementController extends Controller
     public function create()
     {
         $entity = auth()->user()->entity;
-        $objets = $entity->objets->where('type_id', 1);
+        $objets = $entity->objets->where('type_id', 3);
         return view('equipements.create', [
             'types' => $this->types,
             'objets' => $objets->pluck('name', 'id'),
@@ -54,7 +54,7 @@ class EquipementController extends Controller
     public function show(Equipement $equipement)
     {
         $entity = auth()->user()->entity;
-        $objets = $entity->objets->where('type_id', 1);
+        $objets = $entity->objets->where('type_id', 3);
         $dobjet = $equipement->subobjet->objet->id;
         return view('equipements.close', [
             'types' => $this->types,
@@ -69,7 +69,7 @@ class EquipementController extends Controller
     public function edit(Equipement $equipement)
     {
         $entity = auth()->user()->entity;
-        $objets = $entity->objets->where('type_id', 1);
+        $objets = $entity->objets->where('type_id', 3);
         $dobjet = $equipement->subobjet->objet->id;
         return view('equipements.edit', [
             'types' => $this->types,

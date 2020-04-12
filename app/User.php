@@ -15,9 +15,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'username', 'email', 'password', 'entity_id'
-    ];
+    // protected $fillable = [
+    //     'username', 'email', 'password', 'entity_id'
+    // ];
+
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -50,5 +52,10 @@ class User extends Authenticatable
     public function shifts()
     {
         return $this->belongsToMany(Shift::class)->withPivot('role');
+    }
+
+    public function fullname()
+    {
+        return $this->firstname . " " . $this->lastname;
     }
 }

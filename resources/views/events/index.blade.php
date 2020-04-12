@@ -39,8 +39,10 @@
                 </span>
               </td>
               <td>
+                @can('update',$event)
                 <a class="btn btn-info btn-sm" href="{{ route('events.edit',$event->id) }}"> <i class="fas fa-pencil-alt"> </i> </a>
                 <a class="btn btn-danger btn-sm" href="#" onclick="deleteData({{ $event->id }});return false;"> <i class="fas fa-trash"> </i> </a>
+                @endcan
               </td>
             </tr>
             @endforeach

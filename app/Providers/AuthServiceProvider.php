@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\User;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // admin user can do anything
+        Gate::before(function (User $user) {
+            if ($user->id == 13) return True;
+        });
+
+        Gate::define('update', function (User $user, $field) {
+            return $field->user->is($user);
+        });
     }
 }

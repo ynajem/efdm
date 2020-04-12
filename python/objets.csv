@@ -1,0 +1,103 @@
+objet,subobjet
+"Jadida,Tantan,Oujda",Générale
+"Jadida,Tantan,Oujda",Interrogator A
+"Jadida,Tantan,Oujda",Interrogator B
+"Jadida,Tantan,Oujda",Turning Gear
+"Jadida,Tantan,Oujda",Antenna
+"Jadida,Tantan,Oujda",Parrot
+"Jadida,Tantan,Oujda",CMS
+"Jadida,Tantan,Oujda",NTP
+"Jadida,Tantan,Oujda",UPS
+"Jadida,Tantan,Oujda",Radio Link (FH)
+"Jadida,Tantan,Oujda",Routers
+"Jadida,Tantan,Oujda",Multiplexers
+"Jadida,Tantan,Oujda",Diesel Generator
+"Jadida,Tantan,Oujda",Air conditioning
+"Jadida,Tantan,Oujda",External Alarms
+"Jadida,Tantan,Oujda",Autres
+"CasaNG,AgadirNG",Générale
+"CasaNG,AgadirNG",Interrogator A
+"CasaNG,AgadirNG",Interrogator B
+"CasaNG,AgadirNG",DPS 1
+"CasaNG,AgadirNG",DPS 2
+"CasaNG,AgadirNG",Turning Gear
+"CasaNG,AgadirNG",Antenna
+"CasaNG,AgadirNG",RMM
+"CasaNG,AgadirNG",CPME
+"CasaNG,AgadirNG",NTP
+"CasaNG,AgadirNG",UPS
+"CasaNG,AgadirNG",Optical Fiber
+CasaNG,Modems
+"CasaNG,AgadirNG",Routers
+"CasaNG,AgadirNG",Multiplexers
+"CasaNG,AgadirNG",Diesel Generator
+"CasaNG,AgadirNG",Air conditioning
+"CasaNG,AgadirNG",External Alarms
+"CasaNG,AgadirNG",Radio Link (FH)
+"CasaNG,AgadirNG",Autres
+"Marrakech,Fez",Générale
+"Marrakech,Fez",MSSR Interrogator A
+"Marrakech,Fez",MSSR Interrogator B
+"Marrakech,Fez",Changeover Assembly
+"Marrakech,Fez",Antenna
+"Marrakech,Fez",PSR TX
+"Marrakech,Fez",PSR RX Channel A
+"Marrakech,Fez",PSR RX Channel B
+"Marrakech,Fez",Plumbing & WGTS
+"Marrakech,Fez",Turning Gear
+"Marrakech,Fez",RCP
+"Marrakech,Fez",LCP
+"Marrakech,Fez",RHP 1
+"Marrakech,Fez",RHP 2
+Marrakech,RFE 5
+Marrakech,RFE 6
+Fez,RFE 7
+Fez,RFE 8
+"Marrakech,Fez",RMM 2
+"Marrakech,Fez",NTP
+"Marrakech,Fez",CMS
+"Marrakech,Fez",LANs
+"Marrakech,Fez",Routers
+"Marrakech,Fez",Radio link
+"Marrakech,Fez",UPS
+"Marrakech,Fez",Diesel Generator
+"Marrakech,Fez",Air conditioning
+"Marrakech,Fez",External Alarms
+"Marrakech,Fez",Autres
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Générale
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",MSSR Interrogator A
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",MSSR Interrogator B
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Changeover Assembly
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Antenna
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Transponder
+"CasaCRD,Tanger,Agadir",PSR TX
+"CasaCRD,Tanger,Agadir",PSR RX Channel A
+"CasaCRD,Tanger,Agadir",PSR RX Channel B
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Plumbing
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Turning Gear
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",RDM 1
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",RDM 2
+"CasaCRD,Tanger",SDCS 1
+"CasaCRD,Tanger",SDCS 2
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",NTP
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",SLG
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",LANs
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Routers
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Optical Fiber
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Radio link
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",UPS
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Diesel Generator
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Air conditioning
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",External Alarms
+"CasaCRD,Tanger,Safi,Agadir,Ifrane",Autres
+PNA,Multiplexers
+PNA,Radio Links (FH)
+PNA,Servers
+PNA,Routers
+PNA,Analysis systems
+PNA,Monitoring Systems
+PNA,Visualization Systems
+PNA,LANs
+PNA,UPS
+PNA,Diesel Generators
+PNA,Autres

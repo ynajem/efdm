@@ -14,7 +14,7 @@ class Objet extends Model
 
     public function subobjets()
     {
-        return $this->hasMany(Subobjet::class);
+        return $this->hasMany(Subobjet::class)->where('status', 'active')->orderBy('name', 'ASC');;
     }
 
     public function type()

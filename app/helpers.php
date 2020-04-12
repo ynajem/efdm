@@ -10,6 +10,16 @@ function options($options, $default = null)
   return join($r, '\n');
 }
 
+function multioptions($options, $defaults = [])
+{
+  $r = array();
+  foreach ($options as $key => $value) {
+    $selected = in_array($key, $defaults) ? " selected" : "";
+    $r[] = "<option value=\"{$key}\"{$selected}>{$value}</option>";
+  }
+  return join($r, '\n');
+}
+
 function getShift($time = False)
 {
   $shift = 3;

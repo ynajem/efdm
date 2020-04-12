@@ -10,12 +10,12 @@ class Entity extends Model
 
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class)->orderBy('username', 'ASC');
     }
 
     public function objets()
     {
-        return $this->hasMany(Objet::class);
+        return $this->hasMany(Objet::class)->where('status', 'active')->orderBy('name', 'ASC');
     }
 
     public function shifts()

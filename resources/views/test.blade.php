@@ -4,7 +4,7 @@
 
 @section('content')
 <section class="content">
-  @include('tests.test1')
+
 </section>
 @endsection
 

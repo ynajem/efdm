@@ -44,9 +44,19 @@ class Shift extends Model
         return $this->users()->where('role', 'esa')->get();
     }
 
+    public function esas()
+    {
+        return $this->users()->where('role', 'esa')->latest('username')->get()->pluck('id')->all();
+    }
+
     public function renf()
     {
         return $this->users()->where('role', 'renf')->get();
+    }
+
+    public function renfs()
+    {
+        return $this->users()->where('role', 'renf')->latest('username')->get()->pluck('id')->all();
     }
 
     public function team()

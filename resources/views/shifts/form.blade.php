@@ -41,7 +41,7 @@
       <div class="form-group">
         <label>ESAs :</label>
         <select name="esa[]" class="select2bs4" multiple="multiple" style="width: 100%;">
-          {!! options($users) !!}
+          {!! multioptions($users,isset($shift) ? $shift->esas() : []) !!}
         </select>
       </div>
     </div>
@@ -51,7 +51,7 @@
       <div class="form-group">
         <label>Renfort :</label>
         <select name="renf[]" class="custom-select select2bs4" multiple="multiple" style="width: 100%;">
-          {!! options($users) !!}
+          {!! multioptions($users,isset($shift) ? $shift->renfs() : []) !!}
         </select>
       </div>
     </div>

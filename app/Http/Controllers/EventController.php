@@ -19,6 +19,7 @@ class EventController extends Controller
     {
         return view('events.index', [
             'events' => Auth::user()->entity->events()->paginate(10)
+            // 'events' => Event::latest('date')->paginate(10) //display all events
         ]);
     }
 
@@ -54,6 +55,7 @@ class EventController extends Controller
 
     public function edit(Event $event)
     {
+        $this->authorize('update', $event);
         $entity = auth()->user()->entity;
         $objets = $entity->objets->where('type_id', 1);
         $dobjet = $event->subobjet->objet->id;

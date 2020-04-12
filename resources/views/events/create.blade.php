@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="row center">
-  <div class="body col-md-7">
+  <div class="body col-md-9">
     <div class="card">
       <div class="card-header d-flex align-items-center">
         <strong>Ajouter une intervention</strong>
         <img class="ml-auto" src="/svg/003.svg" height="32" alt="">
       </div>
       <div class="card-body">
-        <form class="needs-validation" method="post" action="/events" novalidate>
+        <form class="needs-validation" method="post" action="{{ route('events.store') }}" novalidate>
           @csrf
           @include('events.form')
           <button type="submit" class="btn btn-primary"><span class="fa fa-plus mr-2"></span>Ajouter</button>
