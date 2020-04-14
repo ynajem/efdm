@@ -24,7 +24,7 @@
   </div>
   <div class="form-group row">
     <label class="col-sm-4 col-form-label">Confirmez le mot de passe</label>
-    <div class="col-sm-8"><input name="password-confirm" type="password" class="form-control"></div>
+    <div class="col-sm-8"><input name="password-confirmation" type="password" class="form-control"></div>
   </div>
   <div class="form-group row">
     <div class="offset-sm-4 col-sm-8">

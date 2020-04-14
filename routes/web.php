@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Shift;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('/welecome');
+    $shift = Shift::find(1);
+    return view('/welecome', compact('shift'));
 })->middleware('auth');
 
 Route::get('test', function () {

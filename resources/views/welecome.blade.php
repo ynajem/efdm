@@ -1,5 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1>Welcome Page</h1>
+Bientôt disponible.
 @endsection

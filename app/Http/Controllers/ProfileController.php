@@ -26,7 +26,7 @@ class ProfileController extends Controller
         $user->update($request->all());
 
         return redirect()
-            ->route('profiles.show')
+            ->route('profile.show')
             ->with('message', 'Votre profil a été mis a jour');
     }
 
@@ -40,7 +40,8 @@ class ProfileController extends Controller
     {
         $request->validate([
             'oldpassword' => [new MatchOldPassword],
-            'password' => ['required', 'min:4', 'confirmed'],
+            'password' => ['required', 'min:4'],
+            'password-confirmation' => ['same:password'],
         ]);
 
         $user = User::find(auth()->id());
