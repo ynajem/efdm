@@ -1,18 +1,16 @@
-<!-- <div class="row"> -->
-
 <div class="form-row">
   <div class="form-group col-md-4">
-    <label for="title">Type d'intervention :</label>
+    <label>Type d'intervention :</label>
     <select name="type" id="type" class="custom-select">
       {!! options($types,$event->type ?? '') !!}
     </select>
   </div>
   <div class="form-group col-md-4">
-    <label for="language">Date :</label>
+    <label>Date :</label>
     <input type="date" class="form-control" name="date" value="{{ $event->date ?? date('Y-m-d') }}" required>
   </div>
   <div class="form-group col-md-4">
-    <label for="language">Heure :</label>
+    <label>Heure :</label>
     <input name="time" type="time" class="form-control" value="{{ date('H:i', strtotime($event->time ?? date('H:i'))) }}" required>
   </div>
 </div>
@@ -25,24 +23,19 @@
     </select>
   </div>
   <div class="form-group col-md-4">
-    <label for="topic">Sous-objet :</label>
+    <label>Sous-objet :</label>
     <select class="custom-select" name="subobjet_id" id="subobj" required>
-      {!! options($subobjets, $event->subobjet->id ?? '') !!}
+      {!! options($subobjets, $event->subobjet_id ?? '') !!}
     </select>
   </div>
   <div class="form-group col-md-4">
-    <label for="topic">Extra :</label>
+    <label>Extra (optionnel) :</label>
     <input class="form-control" name="extra" value="{{ $event->extra ?? '' }}">
   </div>
 </div>
-
-<!-- </div> -->
-
-
-
 <div class="form-row">
   <div class="form-group col-md-12">
-    <label for="event">Intervention :</label>
-    <textarea class="form-control" name="event" rows="5" required>{{ $event->event ?? '' }}</textarea>
+    <label>Intervention :</label>
+    <textarea class="form-control @error('event') is-invalid @enderror" name="event" rows="5" required>{{ $event->event ?? '' }}</textarea>
   </div>
 </div>

@@ -9,11 +9,6 @@ use Illuminate\Support\Carbon;
 
 class LineController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     private $types = ['corr' => 'Corrective', 'prev' => 'Preventive'];
 
     public function index()

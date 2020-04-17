@@ -6,9 +6,6 @@
   @method('PUT')
   <h3>Profil</h3>
   <hr>
-  @if(session('message'))
-  <div class="alert alert-success" role="alert"> <strong>{{ session('message') }}</strong> </div>
-  @endif
   <div class="form-row">
     <div class="form-group col-sm-6">
       <label>Email</label>

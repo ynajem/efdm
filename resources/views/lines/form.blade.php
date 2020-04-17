@@ -8,7 +8,7 @@
   <div class="form-group col-md-4">
     <label for="topic">Sous-objet :</label>
     <select class="custom-select" name="subobjet_id" id="subobj" required>
-      {!! options($subobjets, $line->subobjet->id ?? '') !!}
+      {!! options($subobjets, $line->subobjet_id ?? '') !!}
     </select>
   </div>
   <div class="form-group col-md-3">
@@ -27,18 +27,18 @@
   </div>
   <div class="form-group col-md-3">
     <label for="language">Heure d'arrêt:</label>
-    <input name="starttime" type="time" class="form-control" value="{{ date('H:i', strtotime($line->starttime ?? date('H:i'))) }}" required>
+    <input name="starttime" type="time" class="form-control" value="{{ h_m($line->starttime ?? date('H:i')) }}" required>
   </div>
 </div>
 @if($status == 'closed')
 <div class="form-row">
   <div class="form-group col-md-4">
     <label for="language">Date de reprise:</label>
-    <input type="date" class="form-control" name="enddate" value="{{ $line->enddate ?? ''}}" required>
+    <input type="date" class="form-control" name="enddate" value="{{ $line->enddate ?? date('Y-m-d') }}" required>
   </div>
   <div class="form-group col-md-3">
     <label for="language">Heure de reprise:</label>
-    <input name="endtime" type="time" class="form-control" value="{{ $line->endtime ?? ''}}" required>
+    <input name="endtime" type="time" class="form-control" value="{{ h_m($line->endtime ?? date('H:i')) }}" required>
   </div>
 </div>
 @endif

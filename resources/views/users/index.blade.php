@@ -34,7 +34,7 @@
       serverSide: true,
       lengthMenu: [5, 10, 15, 20, 50],
       // pageLength: 5,
-      ajax: "http://efdm/datatables",
+      ajax: "/datatables",
       columns: [{
           data: "id",
         }, {

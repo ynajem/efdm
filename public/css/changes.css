@@ -81,3 +81,8 @@ select {
     width: 240px;
     margin: 0 auto 50px;
 }
+
+.card-header .pagination {
+    margin: 0;
+    padding: 0;
+}

@@ -1,9 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary">
   <!-- Brand Logo -->
   <a href="/" class="brand-link text-center">
-    <!-- <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle" style="opacity: .8">
-    <span class="brand-text font-weight-light">EFDM</span> -->
-    <span><b>EFDM</b></span>
+    <span><b>EFDM v0.1.2 beta</b></span>
   </a>
 
   <!-- Sidebar -->
@@ -15,7 +13,7 @@
       </div>
       <div class="info">
         <a href="{{ route('profile.show') }}" class="d-block">
-          {{ auth()->user()->fullname() }}
+          {{ me()->fullname() }}
         </a>
       </div>
     </div>
@@ -24,8 +22,9 @@
     <nav class="mt-2">
       <ul class="nav nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
 
-        <li class="nav-item has-treevie{{ request()->routeIs('users*') ? ' menu-open' : ''}}">
-          <a href="#" class="nav-link{{ request()->routeIs('users*') ? ' active' : ''}}">
+        @can('admin',me())
+        <li class="nav-item has-treevie{{ request()->is('admin/*') ? ' menu-open' : ''}}">
+          <a href="#" class="nav-link{{ request()->is('admin/*') ? ' active' : ''}}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p> Admin Panel <i class="right fas fa-angle-left"></i> </p>
           </a>
@@ -42,8 +41,15 @@
                 <p>Add New User</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('contactus.index') }}" class="nav-link{{ request()->routeIs('contactus.index') ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Read Messages</p>
+              </a>
+            </li>
           </ul>
         </li>
+        @endcan
 
         <li class="nav-item has-treevie{{ request()->routeIs('shifts*') ? ' menu-open' : ''}}">
           <a href="#" class="nav-link{{ request()->routeIs('shifts*') ? ' active' : ''}}">

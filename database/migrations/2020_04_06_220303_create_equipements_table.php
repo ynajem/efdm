@@ -21,7 +21,7 @@ class CreateEquipementsTable extends Migration
             $table->date('enddate')->nullable();
             $table->time('endtime')->nullable();
             $table->text('comment')->nullable();
-            $table->string('equipement');
+            $table->string('equipement')->nullable();
             $table->integer('duration')->nullable();
             $table->foreignId('entity_id')->constrained();
             $table->foreignId('user_id')->constrained();

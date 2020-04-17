@@ -12,11 +12,6 @@ class ShiftController extends Controller
     public $periods = array(1 => "De 08 h à 14 h", 2 => "De 14 h à 21 h", 3 => "De 21 h à 08 h");
     public $equips = array("A" => 'A', "B" => 'B', "C" => 'C', "D" => 'D', "E" => 'E');
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $user = auth()->user();

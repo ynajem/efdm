@@ -6,13 +6,6 @@
   @method('PUT')
   <h3>Modifier le mot de passe</h3>
   <hr>
-  @if(session('message'))
-  <div class="alert alert-success" role="alert"> <strong>{{ session('message') }}</strong> </div>
-  @endif
-
-  @foreach ($errors->all() as $error)
-  <div class="alert alert-danger" role="alert"> <strong>{{ $error }}</strong> </div>
-  @endforeach
 
   <div class="form-group row">
     <label class="col-sm-4 col-form-label">Ancien mot de passe</label>

@@ -36,3 +36,18 @@ function markdown($text)
   $parsedown = new Parsedown();
   return $parsedown->setBreaksEnabled(true)->text($text);
 }
+
+function me()
+{
+  return auth()->user();
+}
+
+function h_m($time)
+{
+  return date('H:i', strtotime($time));
+}
+
+function day($date)
+{
+  return date('d-m-Y', strtotime($date));
+}
