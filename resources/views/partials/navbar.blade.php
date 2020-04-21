@@ -19,10 +19,10 @@
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#"> <i class="far fa-user"></i> </a>
       <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-        <a href="{{ route('profile.show') }}" class="dropdown-item">Profil</a>
+        <a href="{{ route('profile.show') }}" class="dropdown-item">Mon Profil</a>
         <a href="{{ route('profile.password') }}" class="dropdown-item">Modifier le mot de passe</a>
         <div class="dropdown-divider"></div>
-        <a href="/logout" class="dropdown-item">Log Out</a>
+        <a href="/logout" class="dropdown-item">Logout</a>
       </div>
     </li>
 

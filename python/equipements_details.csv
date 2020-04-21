@@ -1,247 +1,247 @@
 objet,subobjet
-Jadida,Interrogator A
-Tantan,Interrogator A
-Oujda,Interrogator A
-Jadida,Interrogator B
-Tantan,Interrogator B
-Oujda,Interrogator B
-Jadida,Turning Gear
-Tantan,Turning Gear
-Oujda,Turning Gear
-Jadida,Antenna
-Tantan,Antenna
-Oujda,Antenna
-Jadida,Parrot
-Tantan,Parrot
-Oujda,Parrot
-Jadida,CMS
-Tantan,CMS
-Oujda,CMS
-Jadida,NTP
-Tantan,NTP
-Oujda,NTP
-Jadida,UPS
-Tantan,UPS
-Oujda,UPS
-Jadida,Radio Link (FH)
-Tantan,Radio Link (FH)
-Oujda,Radio Link (FH)
-Jadida,Routers
-Tantan,Routers
-Oujda,Routers
-Jadida,Multiplexers
-Tantan,Multiplexers
-Oujda,Multiplexers
-Jadida,Diesel Generator
-Tantan,Diesel Generator
-Oujda,Diesel Generator
-Jadida,Air conditioning
-Tantan,Air conditioning
-Oujda,Air conditioning
-Jadida,Autres
-Tantan,Autres
-Oujda,Autres
-CasaNG,Interrogator A
-AgadirNG,Interrogator A
-CasaNG,Interrogator B
-AgadirNG,Interrogator B
-CasaNG,DPS 1
-AgadirNG,DPS 1
-CasaNG,DPS 2
-AgadirNG,DPS 2
-CasaNG,Turning Gear
-AgadirNG,Turning Gear
-CasaNG,Antenna
-AgadirNG,Antenna
-CasaNG,RMM
-AgadirNG,RMM
-CasaNG,CPME
-AgadirNG,CPME
-CasaNG,NTP
-AgadirNG,NTP
-CasaNG,UPS
-AgadirNG,UPS
-CasaNG,Optical Fiber
-AgadirNG,Optical Fiber
-CasaNG,Modems
-CasaNG,Routers
-AgadirNG,Routers
-CasaNG,Multiplexers
-AgadirNG,Multiplexers
-CasaNG,Diesel Generator
-AgadirNG,Diesel Generator
-CasaNG,Air conditioning
+Agadir,Air conditioning
+Agadir,Antenna
+Agadir,Autres
+Agadir,Changeover Assembly
+Agadir,Diesel Generator
+Agadir,LANs
+Agadir,MSSR Interrogator A
+Agadir,MSSR Interrogator B
+Agadir,NTP
+Agadir,Optical Fiber
+Agadir,Plumbing
+Agadir,PSR RX Channel A
+Agadir,PSR RX Channel B
+Agadir,PSR TX
+Agadir,Radio link
+Agadir,RDM 1
+Agadir,RDM 2
+Agadir,Routers
+Agadir,SLG
+Agadir,Transponder
+Agadir,Turning Gear
+Agadir,UPS
 AgadirNG,Air conditioning
-CasaNG,Radio Link (FH)
-AgadirNG,Radio Link (FH)
-CasaNG,Autres
+AgadirNG,Antenna
 AgadirNG,Autres
-Marrakech,MSSR Interrogator A
-Fez,MSSR Interrogator A
-Marrakech,MSSR Interrogator B
-Fez,MSSR Interrogator B
-Marrakech,Changeover Assembly
-Fez,Changeover Assembly
-Marrakech,Antenna
+AgadirNG,CPME
+AgadirNG,Diesel Generator
+AgadirNG,DPS 1
+AgadirNG,DPS 2
+AgadirNG,Interrogator A
+AgadirNG,Interrogator B
+AgadirNG,Multiplexers
+AgadirNG,NTP
+AgadirNG,Optical Fiber
+AgadirNG,Radio Link (FH)
+AgadirNG,RMM
+AgadirNG,Routers
+AgadirNG,Turning Gear
+AgadirNG,UPS
+CasaCRD,Air conditioning
+CasaCRD,Antenna
+CasaCRD,Autres
+CasaCRD,Changeover Assembly
+CasaCRD,Diesel Generator
+CasaCRD,LANs
+CasaCRD,MSSR Interrogator A
+CasaCRD,MSSR Interrogator B
+CasaCRD,NTP
+CasaCRD,Optical Fiber
+CasaCRD,Plumbing
+CasaCRD,PSR RX Channel A
+CasaCRD,PSR RX Channel B
+CasaCRD,PSR TX
+CasaCRD,Radio link
+CasaCRD,RDM 1
+CasaCRD,RDM 2
+CasaCRD,Routers
+CasaCRD,SDCS 1
+CasaCRD,SDCS 2
+CasaCRD,SLG
+CasaCRD,Transponder
+CasaCRD,Turning Gear
+CasaCRD,UPS
+CasaNG,Air conditioning
+CasaNG,Antenna
+CasaNG,Autres
+CasaNG,CPME
+CasaNG,Diesel Generator
+CasaNG,DPS 1
+CasaNG,DPS 2
+CasaNG,Interrogator A
+CasaNG,Interrogator B
+CasaNG,Modems
+CasaNG,Multiplexers
+CasaNG,NTP
+CasaNG,Optical Fiber
+CasaNG,Radio Link (FH)
+CasaNG,RMM
+CasaNG,Routers
+CasaNG,Turning Gear
+CasaNG,UPS
+Fez,Air conditioning
 Fez,Antenna
-Marrakech,PSR TX
-Fez,PSR TX
-Marrakech,PSR RX Channel A
-Fez,PSR RX Channel A
-Marrakech,PSR RX Channel B
-Fez,PSR RX Channel B
-Marrakech,Plumbing & WGTS
-Fez,Plumbing & WGTS
-Marrakech,Turning Gear
-Fez,Turning Gear
-Marrakech,RCP
-Fez,RCP
-Marrakech,LCP
+Fez,Autres
+Fez,Changeover Assembly
+Fez,CMS
+Fez,Diesel Generator
+Fez,LANs
 Fez,LCP
-Marrakech,RHP 1
-Fez,RHP 1
-Marrakech,RHP 2
-Fez,RHP 2
-Marrakech,RFE 5
-Marrakech,RFE 6
+Fez,MSSR Interrogator A
+Fez,MSSR Interrogator B
+Fez,NTP
+Fez,Plumbing & WGTS
+Fez,PSR RX Channel A
+Fez,PSR RX Channel B
+Fez,PSR TX
+Fez,Radio link
+Fez,RCP
 Fez,RFE 7
 Fez,RFE 8
-Marrakech,RMM 2
+Fez,RHP 1
+Fez,RHP 2
 Fez,RMM 2
-Marrakech,NTP
-Fez,NTP
-Marrakech,CMS
-Fez,CMS
-Marrakech,LANs
-Fez,LANs
-Marrakech,Routers
 Fez,Routers
-Marrakech,Radio link
-Fez,Radio link
-Marrakech,UPS
+Fez,Turning Gear
 Fez,UPS
-Marrakech,Diesel Generator
-Fez,Diesel Generator
-Marrakech,Air conditioning
-Fez,Air conditioning
-Marrakech,Autres
-Fez,Autres
-CasaCRD,MSSR Interrogator A
-Tanger,MSSR Interrogator A
-Safi,MSSR Interrogator A
-Agadir,MSSR Interrogator A
-Ifrane,MSSR Interrogator A
-CasaCRD,MSSR Interrogator B
-Tanger,MSSR Interrogator B
-Safi,MSSR Interrogator B
-Agadir,MSSR Interrogator B
-Ifrane,MSSR Interrogator B
-CasaCRD,Changeover Assembly
-Tanger,Changeover Assembly
-Safi,Changeover Assembly
-Agadir,Changeover Assembly
-Ifrane,Changeover Assembly
-CasaCRD,Antenna
-Tanger,Antenna
-Safi,Antenna
-Agadir,Antenna
-Ifrane,Antenna
-CasaCRD,Transponder
-Tanger,Transponder
-Safi,Transponder
-Agadir,Transponder
-Ifrane,Transponder
-CasaCRD,PSR TX
-Tanger,PSR TX
-Agadir,PSR TX
-CasaCRD,PSR RX Channel A
-Tanger,PSR RX Channel A
-Agadir,PSR RX Channel A
-CasaCRD,PSR RX Channel B
-Tanger,PSR RX Channel B
-Agadir,PSR RX Channel B
-CasaCRD,Plumbing
-Tanger,Plumbing
-Safi,Plumbing
-Agadir,Plumbing
-Ifrane,Plumbing
-CasaCRD,Turning Gear
-Tanger,Turning Gear
-Safi,Turning Gear
-Agadir,Turning Gear
-Ifrane,Turning Gear
-CasaCRD,RDM 1
-Tanger,RDM 1
-Safi,RDM 1
-Agadir,RDM 1
-Ifrane,RDM 1
-CasaCRD,RDM 2
-Tanger,RDM 2
-Safi,RDM 2
-Agadir,RDM 2
-Ifrane,RDM 2
-CasaCRD,SDCS 1
-Tanger,SDCS 1
-CasaCRD,SDCS 2
-Tanger,SDCS 2
-CasaCRD,NTP
-Tanger,NTP
-Safi,NTP
-Agadir,NTP
-Ifrane,NTP
-CasaCRD,SLG
-Tanger,SLG
-Safi,SLG
-Agadir,SLG
-Ifrane,SLG
-CasaCRD,LANs
-Tanger,LANs
-Safi,LANs
-Agadir,LANs
-Ifrane,LANs
-CasaCRD,Routers
-Tanger,Routers
-Safi,Routers
-Agadir,Routers
-Ifrane,Routers
-CasaCRD,Optical Fiber
-Tanger,Optical Fiber
-Safi,Optical Fiber
-Agadir,Optical Fiber
-Ifrane,Optical Fiber
-CasaCRD,Radio link
-Tanger,Radio link
-Safi,Radio link
-Agadir,Radio link
-Ifrane,Radio link
-CasaCRD,UPS
-Tanger,UPS
-Safi,UPS
-Agadir,UPS
-Ifrane,UPS
-CasaCRD,Diesel Generator
-Tanger,Diesel Generator
-Safi,Diesel Generator
-Agadir,Diesel Generator
-Ifrane,Diesel Generator
-CasaCRD,Air conditioning
-Tanger,Air conditioning
-Safi,Air conditioning
-Agadir,Air conditioning
 Ifrane,Air conditioning
-CasaCRD,Autres
-Tanger,Autres
-Safi,Autres
-Agadir,Autres
+Ifrane,Antenna
 Ifrane,Autres
+Ifrane,Changeover Assembly
+Ifrane,Diesel Generator
+Ifrane,LANs
+Ifrane,MSSR Interrogator A
+Ifrane,MSSR Interrogator B
+Ifrane,NTP
+Ifrane,Optical Fiber
+Ifrane,Plumbing
+Ifrane,Radio link
+Ifrane,RDM 1
+Ifrane,RDM 2
+Ifrane,Routers
+Ifrane,SLG
+Ifrane,Transponder
+Ifrane,Turning Gear
+Ifrane,UPS
+Jadida,Air conditioning
+Jadida,Antenna
+Jadida,Autres
+Jadida,CMS
+Jadida,Diesel Generator
+Jadida,Interrogator A
+Jadida,Interrogator B
+Jadida,Multiplexers
+Jadida,NTP
+Jadida,Parrot
+Jadida,Radio Link (FH)
+Jadida,Routers
+Jadida,Turning Gear
+Jadida,UPS
+Marrakech,Air conditioning
+Marrakech,Antenna
+Marrakech,Autres
+Marrakech,Changeover Assembly
+Marrakech,CMS
+Marrakech,Diesel Generator
+Marrakech,LANs
+Marrakech,LCP
+Marrakech,MSSR Interrogator A
+Marrakech,MSSR Interrogator B
+Marrakech,NTP
+Marrakech,Plumbing & WGTS
+Marrakech,PSR RX Channel A
+Marrakech,PSR RX Channel B
+Marrakech,PSR TX
+Marrakech,Radio link
+Marrakech,RCP
+Marrakech,RFE 5
+Marrakech,RFE 6
+Marrakech,RHP 1
+Marrakech,RHP 2
+Marrakech,RMM 2
+Marrakech,Routers
+Marrakech,Turning Gear
+Marrakech,UPS
+Oujda,Air conditioning
+Oujda,Antenna
+Oujda,Autres
+Oujda,CMS
+Oujda,Diesel Generator
+Oujda,Interrogator A
+Oujda,Interrogator B
+Oujda,Multiplexers
+Oujda,NTP
+Oujda,Parrot
+Oujda,Radio Link (FH)
+Oujda,Routers
+Oujda,Turning Gear
+Oujda,UPS
+PNA,Analysis systems
+PNA,Autres
+PNA,Diesel Generators
+PNA,LANs
+PNA,Monitoring Systems
 PNA,Multiplexers
 PNA,Radio Links (FH)
-PNA,Servers
 PNA,Routers
-PNA,Analysis systems
-PNA,Monitoring Systems
-PNA,Visualization Systems
-PNA,LANs
+PNA,Servers
 PNA,UPS
-PNA,Diesel Generators
-PNA,Autres
+PNA,Visualization Systems
+Safi,Air conditioning
+Safi,Antenna
+Safi,Autres
+Safi,Changeover Assembly
+Safi,Diesel Generator
+Safi,LANs
+Safi,MSSR Interrogator A
+Safi,MSSR Interrogator B
+Safi,NTP
+Safi,Optical Fiber
+Safi,Plumbing
+Safi,Radio link
+Safi,RDM 1
+Safi,RDM 2
+Safi,Routers
+Safi,SLG
+Safi,Transponder
+Safi,Turning Gear
+Safi,UPS
+Tanger,Air conditioning
+Tanger,Antenna
+Tanger,Autres
+Tanger,Changeover Assembly
+Tanger,Diesel Generator
+Tanger,LANs
+Tanger,MSSR Interrogator A
+Tanger,MSSR Interrogator B
+Tanger,NTP
+Tanger,Optical Fiber
+Tanger,Plumbing
+Tanger,PSR RX Channel A
+Tanger,PSR RX Channel B
+Tanger,PSR TX
+Tanger,Radio link
+Tanger,RDM 1
+Tanger,RDM 2
+Tanger,Routers
+Tanger,SDCS 1
+Tanger,SDCS 2
+Tanger,SLG
+Tanger,Transponder
+Tanger,Turning Gear
+Tanger,UPS
+Tantan,Air conditioning
+Tantan,Antenna
+Tantan,Autres
+Tantan,CMS
+Tantan,Diesel Generator
+Tantan,Interrogator A
+Tantan,Interrogator B
+Tantan,Multiplexers
+Tantan,NTP
+Tantan,Parrot
+Tantan,Radio Link (FH)
+Tantan,Routers
+Tantan,Turning Gear
+Tantan,UPS

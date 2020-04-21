@@ -37,3 +37,5 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect()->route('login');
 });
+
+Route::view('avatar', 'profiles.avatar');

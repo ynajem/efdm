@@ -17,8 +17,11 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        $user = auth()->user();
-        $user->update($request->all());
+        $data = $request->all();
+        if (request('avatar')) {
+            $data['avatar'] = request('avatar')->store('avatars');
+        }
+        me()->update($data);
 
         return redirect()
             ->route('profile.show')

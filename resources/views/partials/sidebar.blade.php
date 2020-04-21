@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary">
   <!-- Brand Logo -->
   <a href="/" class="brand-link text-center">
-    <span><b>EFDM v0.1.2 beta</b></span>
+    <span><b>EFDM v0.1.3 beta</b></span>
   </a>
 
   <!-- Sidebar -->
@@ -9,7 +9,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="/img/user1.png" class="img-circle">
+        <img src="{{ asset(me()->avatar) }}" class="img-circle">
       </div>
       <div class="info">
         <a href="{{ route('profile.show') }}" class="d-block">
