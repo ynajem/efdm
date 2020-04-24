@@ -22,7 +22,7 @@
     <nav class="mt-2">
       <ul class="nav nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
 
-        @can('admin',me())
+        @can('update_users')
         <li class="nav-item has-treevie{{ request()->is('admin/*') ? ' menu-open' : ''}}">
           <a href="#" class="nav-link{{ request()->is('admin/*') ? ' active' : ''}}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -146,6 +146,35 @@
             </li>
           </ul>
         </li>
+
+        @can('view_events')
+        <li class="nav-item has-treevie{{ request()->routeIs('supervision*') ? ' menu-open' : ''}}">
+          <a href="#" class="nav-link{{ request()->routeIs('supervision*') ? ' active' : ''}}">
+            <i class="nav-icon fa fa-ticket-alt"></i>
+            <p> Supervision <i class="right fas fa-angle-left"></i> </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('supervision.events') }}" class="nav-link{{ request()->routeIs('supervision.events') ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Afficher les interventions</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('supervision.equipements') }}" class="nav-link{{ request()->routeIs('supervision.equipements') ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Afficher les equipements H.S</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('supervision.lines') }}" class="nav-link{{ request()->routeIs('supervision.lines') ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Afficher les arrêts et les coupures</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        @endcan
 
       </ul>
     </nav>

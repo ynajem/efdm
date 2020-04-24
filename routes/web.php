@@ -23,6 +23,12 @@ Route::middleware('auth')->group(function () {
     Route::put('profile', 'ProfileController@update')->name('profile.update');
     Route::get('password', 'ProfileController@password')->name('profile.password');
     Route::put('password', 'ProfileController@passUpdate')->name('profile.passUpdate');
+
+    Route::middleware('can:view_events')->prefix('supervision')->group(function () {
+        Route::get('events', 'SupervisionController@events')->name('supervision.events');
+        Route::get('lines', 'SupervisionController@lines')->name('supervision.lines');
+        Route::get('equipements', 'SupervisionController@equipements')->name('supervision.equipements');
+    });
 });
 
 Route::middleware('admin')->prefix('admin')->group(function () {
