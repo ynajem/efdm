@@ -1,5 +1,5 @@
 # Change to the project directory
-cd /var/www/html/efdm
+cd ~/efdm
 
 # Turn on maintenance mode
 php artisan down
@@ -10,7 +10,7 @@ php artisan down
 git pull origin master
 
 # Install/update composer dependecies
-composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+#composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 
 # Run database migrations
 php artisan migrate --force

@@ -15,12 +15,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::before(function ($user, $ability) {
-            return $user->abilities()->contains($ability);
+        Gate::define('update', function (User $user, $field) {
+            if ($field->user->is($user)) {
+                return True;
+            }
         });
 
-        // Gate::define('update', function (User $user, $field) {
-        //     return $field->user->is($user);
-        // });
+        Gate::before(function ($user, $ability) {
+            if ($user->abilities()->contains($ability)) {
+                return True;
+            };
+        });
     }
 }

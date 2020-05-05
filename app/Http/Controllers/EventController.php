@@ -46,7 +46,7 @@ class EventController extends Controller
         return redirect()->route('events.index');
     }
 
-   
+
 
     public function edit(Event $event)
     {
@@ -84,17 +84,19 @@ class EventController extends Controller
 
     public function validator($request)
     {
-        return $request->validate([
-            'date' => ['required', 'date'],
-            'time' => ['required', 'date_format:H:i'],
-            'event' => ['required'],
-            'type' => ['string'],
-            'extra' => ['string','nullable'],
-            'subobjet_id' => ['required','integer']
-        ],
-        [
-            'event.required' => "Veuillez ajouter une intervention.",
-            '*.required' => "S'il-vous-plaît remplissez tous les champs requis.",
-        ]);     
+        return $request->validate(
+            [
+                'date' => ['required', 'date'],
+                'time' => ['required', 'date_format:H:i'],
+                'event' => ['required'],
+                'type' => ['string'],
+                'extra' => ['string', 'nullable'],
+                'subobjet_id' => ['required', 'integer']
+            ],
+            [
+                'event.required' => "Veuillez ajouter une intervention.",
+                '*.required' => "S'il-vous-plaît remplissez tous les champs requis.",
+            ]
+        );
     }
 }

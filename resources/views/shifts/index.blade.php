@@ -3,7 +3,7 @@
 @section('title','Afficher toutes les vacations')
 
 @section('content')
-<x-pages-card icon="/svg/003.svg" :link="route('shifts.create')" button="Ajouter une intervention" :items="$shifts">
+<x-pages-card icon="/svg/003.svg" :link="route('shifts.create')" button="Ajouter" :items="$shifts">
 
   <thead>
     <tr>
