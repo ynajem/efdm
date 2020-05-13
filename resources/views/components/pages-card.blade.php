@@ -2,8 +2,7 @@
   <div class="body col-md-12">
     <div class="card">
       <div class="card-header">
-        <img class="mr-2" src="{{$icon}}" height="32">
-        <a href="{{$link}}" class="btn btn-sm btn-success">
+        <a href="{{$link}}" class="btn btn-success">
           <i class="fas fa-plus mr-2"></i>{{$button}}
         </a>
         <div class="ml-auto">

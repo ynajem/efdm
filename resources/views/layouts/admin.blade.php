@@ -5,7 +5,7 @@
   @include('partials.head')
 </head>
 
-<body class="hold-transition sidebar-mini text-sm skin-blue-light">
+<body class="hold-transition sidebar-mini text-sm">
   <div class="wrapper">
 
     @include('partials.navbar')
@@ -15,7 +15,7 @@
 
       <div class="content-header">
         <div class="container-fluid mb-2">
-          <h1 class="m-0 text-dark">@yield('title')</h1>
+          <h1>@yield('title')</h1>
         </div>
       </div>
 

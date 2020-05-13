@@ -157,19 +157,19 @@
             <li class="nav-item">
               <a href="{{ route('supervision.events') }}" class="nav-link{{ request()->routeIs('supervision.events') ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Afficher les interventions</p>
+                <p>Les interventions</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('supervision.equipements') }}" class="nav-link{{ request()->routeIs('supervision.equipements') ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Afficher les equipements H.S</p>
+                <p>Les equipements H.S</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('supervision.lines') }}" class="nav-link{{ request()->routeIs('supervision.lines') ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Afficher les arrêts et les coupures</p>
+                <p>Les arrêts et les coupures</p>
               </a>
             </li>
           </ul>

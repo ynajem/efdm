@@ -36,7 +36,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::resource('users', 'UsersController');
 });
 
-Route::get('datatables', 'UsersController@datatable');
+Route::get('allusers', 'UsersController@datatable');
 Auth::routes();
 
 Route::get('/logout', function () {
@@ -45,3 +45,4 @@ Route::get('/logout', function () {
 });
 
 Route::view('avatar', 'profiles.avatar');
+Route::view('test', 'test');

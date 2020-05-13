@@ -31,10 +31,6 @@
         </span>
       </td>
       <td>
-        @can('update',$message)
-        <a class="btn btn-info btn-sm" href="#"> <i class="fas fa-pencil-alt"> </i> </a>
-        <a class="btn btn-danger btn-sm" href="#"> <i class="fas fa-trash"> </i> </a>
-        @endcan
       </td>
     </tr>
     @endforeach
