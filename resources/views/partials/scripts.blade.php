@@ -7,15 +7,13 @@
 <script src="/plugins/toastr/toastr.min.js"></script>
 <script src="/js/app.js"></script>
 
-
 <script>
-  @foreach($errors->all() as $error)
-  toastr.error("{{ $error }}");
-  @endforeach
-  @if(session('message'))
-  toastr.success("{{ session('message') }}");
-  @endif
-
+    @foreach($errors->all() as $error)
+    toastr.error("{{ $error }}");
+    @endforeach
+    @if(session('message'))
+    toastr.success("{{ session('message') }}");
+    @endif
 </script>
 
 @yield('scripts')

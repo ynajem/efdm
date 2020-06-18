@@ -4,7 +4,9 @@ window.end = moment();
 function cb(start, end) {
   window.start = start;
   window.end = end;
-  $('#daterange span').html(start.format('DD-MM-YYYY') + ' - ' + end.format('DD-MM-YYYY'));
+  range = start.format('DD-MM-YYYY') + ' - ' + end.format('DD-MM-YYYY');
+  $('#daterange span').html(range);
+  $('title').append(` [${range}]`);
   table.draw();
 }
 

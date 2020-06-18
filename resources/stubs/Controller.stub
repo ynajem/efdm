@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Store{{modelName}}Request;
+use App\{{modelName}};
+
+class {{modelName}}Controller extends Controller
+{
+    public function index()
+    {
+        ${{modelNamePluralLowerCase}} = {{modelName}}::all();
+        return view('{{modelNamePluralLowerCase}}.index', compact('{{modelNamePluralLowerCase}}'));
+    }
+
+    public function create()
+    {
+        return view('{{modelNamePluralLowerCase}}.create');
+    }
+
+    public function store(Store{{modelName}}Request $request)
+    {
+        ${{modelNameSingularLowerCase}} = {{modelName}}::create($request->all());
+        return redirect()->route('{{modelNamePluralLowerCase}}.index');
+    }
+
+    public function edit({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        return view('{{modelNamePluralLowerCase}}.edit', compact('{{modelNameSingularLowerCase}}'));
+    }
+
+    public function update(Store{{modelName}}Request $request, {{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        ${{modelNameSingularLowerCase}}->update($request->all());
+        return redirect()->route('{{modelNamePluralLowerCase}}.index');
+    }
+
+    public function show({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        return view('{{modelNamePluralLowerCase}}.show', compact('{{modelNameSingularLowerCase}}'));
+    }
+
+    public function destroy({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        ${{modelNameSingularLowerCase}}->delete();
+        return back();
+    }
+}

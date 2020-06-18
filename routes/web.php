@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+// Form Builder
+Route::resource('builder', 'BuilderController');
+
 Route::middleware('auth')->group(function () {
     Route::view('/', 'home')->name('home');
 
@@ -29,14 +32,26 @@ Route::middleware('auth')->group(function () {
         Route::get('lines', 'SupervisionController@lines')->name('supervision.lines');
         Route::get('equipements', 'SupervisionController@equipements')->name('supervision.equipements');
     });
+    Route::resource('objets', 'ObjetController');
+    // Route::resource('subobjets', 'SubobjetController');
+    Route::resource('objets.subobjets', 'SubobjetController');
 });
 
-Route::middleware('admin')->prefix('admin')->group(function () {
-    Route::get('/messages', 'ContactusController@index')->name('contactus.index');
-    Route::resource('users', 'UsersController');
+Route::middleware('can:admin')->prefix('admin')->group(function () {
+    // Messages
+    Route::resource('messages', 'MessageController');
+    // Route::get('messages', 'ContactusController@index')->name('contactus.index');
+    // Users
+    Route::resource('users', 'UserController');
+    // Entities
+    Route::resource('entities', 'EntityController');
+    // Roles
+    Route::resource('roles', 'RolesController');
+    // Abilities
+    Route::resource('abilities', 'AbilityController');
 });
 
-Route::get('allusers', 'UsersController@datatable');
+// Route::get('allusers', 'UsersController@datatable');
 Auth::routes();
 
 Route::get('/logout', function () {
@@ -44,5 +59,8 @@ Route::get('/logout', function () {
     return redirect()->route('login');
 });
 
-Route::view('avatar', 'profiles.avatar');
-Route::view('test', 'test');
+// Route::view('avatarr', 'profiles.avatar');
+// Route::view('test', 'test');
+Route::view('/reports/lines', 'reports.lines');
+Route::get('/reports/{objet}', 'ReportController@datatable');
+Route::view('/lolo', 'login');

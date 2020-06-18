@@ -24,14 +24,14 @@ class CreateRolesTable extends Migration
 
         Schema::create('ability_role', function (Blueprint $table) {
             $table->unique(['role_id', 'ability_id']);
-            $table->foreignId('role_id')->constrained();
-            $table->foreignId('ability_id')->constrained();
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('ability_id')->references('id')->on('abilities')->onDelete('cascade');
             $table->timestamps();
         });
 
         Schema::create('role_user', function (Blueprint $table) {
             $table->unique(['role_id', 'user_id']);
-            $table->foreignId('role_id')->constrained();
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

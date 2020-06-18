@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    protected $guarded = [];
+    protected $guarded = ['abilities'];
+
     public function abilities()
     {
         return $this->belongsToMany(Ability::class)->withTimestamps();

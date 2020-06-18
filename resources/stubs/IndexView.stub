@@ -1,0 +1,18 @@
+<x-data title="List of {{modelNamePluralLowerCase}}" :route="route('{{modelNamePluralLowerCase}}.create')">
+
+  <table class="table table-sm table-striped datatable">
+    <thead>
+      <tr>
+        <th> Id </th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach(${{modelNamePluralLowerCase}} as ${{modelNameSingularLowerCase}})
+      <tr data-entry-id="{{ ${{modelNameSingularLowerCase}}->id }}">
+        <td> {{ ${{modelNameSingularLowerCase}}->id ?? '' }} </td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+
+</x-data>

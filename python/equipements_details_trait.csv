@@ -1,0 +1,64 @@
+objet,subobjet
+chaîne plan de vol ,FDP-1
+chaîne plan de vol ,FDP-2
+chaîne plan de vol ,FDD-1
+chaîne plan de vol ,FDD-2
+chaîne plan de vol ,Diffiseur - AFTN-1
+chaîne plan de vol ,Diffiseur - AFTN-2
+chaîne plan de vol ,Diffiseur - redevance 
+chaîne Donnée Radar ,DBM
+chaîne Donnée Radar ,RDCU-1
+chaîne Donnée Radar ,RDCU-2
+chaîne Donnée Radar ,RDCU-3
+chaîne Donnée Radar ,SDP-1
+chaîne Donnée Radar ,SDP-2
+Visualisation ,CMD-1
+Visualisation ,CMD-2
+Visualisation ,FDD-1
+Visualisation ,FDD-2
+Visualisation ,SDD-1
+Visualisation ,SDD-2
+Visualisation ,SDD-3
+Visualisation ,SDD-4
+Visualisation ,SDD-5
+Visualisation ,SDD-6
+Visualisation ,SDD-7
+Visualisation ,SDD-8
+Visualisation ,SDD-9
+Visualisation ,SDD-10
+Visualisation ,SDD-11
+Visualisation ,SDD-12
+Visualisation ,SDD-13
+Visualisation ,SDD-14
+Visualisation ,SDD-15
+Visualisation ,SDD-16
+Visualisation ,SDD-17
+Visualisation ,SDD-18
+Visualisation ,SDD-19
+Visualisation ,SDD-20
+Visualisation ,SDD-21
+Visualisation ,SDD-22
+Visualisation ,SDD-23
+Visualisation ,SDD-24
+Visualisation ,SDD-25
+Visualisation ,SDD-26
+Visualisation ,SDD-27
+Visualisation ,SDD-28
+Visualisation ,SDD-29
+Réseau et NTP ,Switch LAN-1
+Réseau et NTP ,Switch LAN-2
+Réseau et NTP ,Switch LAN-3
+Réseau et NTP ,Switch-1 IP From Détection 
+Réseau et NTP ,Switch-2 IP From Détection 
+Réseau et NTP ,Switch from-to DMB & Sim 
+Réseau et NTP ,NTP-1
+Réseau et NTP ,NTP-2
+Réseau et NTP ,Entry Nœud -A
+Réseau et NTP ,Entry Nœud -B
+Archivage et reproduction ,DRF-1 
+Archivage et reproduction ,DRF-2
+Archivage et reproduction ,DRF-1 Tape - 1
+Archivage et reproduction ,DRF-1 Tape - 2
+Archivage et reproduction ,DRF-2 Tape - 1
+Archivage et reproduction ,DRF-2 Tape - 2
+Archivage et reproduction ,FDP-historical

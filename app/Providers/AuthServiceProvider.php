@@ -15,11 +15,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('update', function (User $user, $field) {
-            if ($field->user->is($user)) {
-                return True;
-            }
-        });
+        // Gate::define('update', function (User $user, $field) {
+        //     if ($field->user->is($user)) {
+        //         return True;
+        //     }
+        // });
 
         Gate::before(function ($user, $ability) {
             if ($user->abilities()->contains($ability)) {

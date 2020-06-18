@@ -22,7 +22,7 @@
     <nav class="mt-2">
       <ul class="nav nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
 
-        @can('update_users')
+        @can('admin')
         <li class="nav-item has-treevie{{ request()->is('admin/*') ? ' menu-open' : ''}}">
           <a href="#" class="nav-link{{ request()->is('admin/*') ? ' active' : ''}}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -30,21 +30,33 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('users.index') }}" class="nav-link{{ request()->routeIs('users.index') ? ' active' : ''}}">
+              <a href="{{ route('users.index') }}" class="nav-link{{ request()->routeIs('users.*') ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Users</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('users.create') }}" class="nav-link{{ request()->routeIs('users.create') ? ' active' : ''}}">
+              <a href="{{ route('entities.index') }}" class="nav-link{{ request()->routeIs('entities.*') ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Add New User</p>
+                <p>Entities</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('contactus.index') }}" class="nav-link{{ request()->routeIs('contactus.index') ? ' active' : ''}}">
+              <a href="{{ route('messages.index') }}" class="nav-link{{ request()->routeIs('messages.index') ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Read Messages</p>
+                <p>Messages</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('roles.index') }}" class="nav-link{{ request()->routeIs('roles.*') ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Roles</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('abilities.index') }}" class="nav-link{{ request()->routeIs('abilities.*') ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Abilities</p>
               </a>
             </li>
           </ul>
@@ -147,7 +159,7 @@
           </ul>
         </li>
 
-        @can('view_events')
+        @can('supervise')
         <li class="nav-item has-treevie{{ request()->routeIs('supervision*') ? ' menu-open' : ''}}">
           <a href="#" class="nav-link{{ request()->routeIs('supervision*') ? ' active' : ''}}">
             <i class="nav-icon fa fa-ticket-alt"></i>
@@ -170,6 +182,29 @@
               <a href="{{ route('supervision.lines') }}" class="nav-link{{ request()->routeIs('supervision.lines') ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Les arrêts et les coupures</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        @endcan
+
+        @can('edit_objects')
+        <li class="nav-item has-treevie{{ request()->routeIs('*objets*') ? ' menu-open' : ''}}">
+          <a href="#" class="nav-link{{ request()->routeIs('*objets*') ? ' active' : ''}}">
+            <i class="nav-icon fa fa-ticket-alt"></i>
+            <p> Gestion des objets <i class="right fas fa-angle-left"></i> </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('objets.index') }}" class="nav-link{{ request()->routeIs('objets.*') ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Les objets</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link{{ request()->routeIs('subobjets.*') ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Les sous-objets</p>
               </a>
             </li>
           </ul>

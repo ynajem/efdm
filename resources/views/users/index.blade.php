@@ -1,38 +1,37 @@
-<x-datatable title='La liste des utilisateurs'>
-  <script>
-    var table = $("#datatable").DataTable({
-      processing: true,
-      serverSide: true,
-      ajax: {
-        url: "/allusers",
-        "data": function(data) {
-          data.from_date = window.start.format('YYYY-MM-DD');
-          data.to_date = window.end.format('YYYY-MM-DD');
-        }
-      },
-      columns: [{
-          data: "fullname",
-          title: "Name"
-        },
-        {
-          data: "badge",
-          title: "Matricule"
-        },
-        {
-          data: "entity",
-          title: "Entity"
-        }, {
-          data: "email",
-          title: "Email"
-        }, {
-          data: "created_at",
-          title: "Created At",
-          render: function(d) {
-            date = new Date(d);
-            return `<b class="text-bold">${date.toDateString()}</b>`;
-          }
-        }
-      ]
-    })
-  </script>
-</x-datatable>
+<x-data title='La liste des utilisateurs' :route="route('users.create')">
+  <table class="table table-sm table-striped datatable">
+    <thead>
+      <tr>
+        <th> Fullname </th>
+        <th> Entity </th>
+        <th> Roles </th>
+        <th> Status </th>
+        <th> Actions </th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($users as $key => $user)
+      <tr data-entry-id="{{ $user->id }}">
+        <td> {{ $user->fullname() ?? '' }} </td>
+        <td> {{ $user->entity->label ?? '' }} </td>
+        <td>
+          @foreach($user->roles as $id => $role)
+          <span class="badge badge-info">{{ $role->name }}</span>
+          @endforeach
+        </td>
+        <td>{{ $user->status }}</td>
+        <td>
+          @can('update_users')
+          <a class="btn btn-xs btn-primary" href="{{ route('users.show', $user->id) }}">
+            <i class="fas fa-eye"></i>
+          </a>
+          <a class="btn btn-sm btn-success" href="{{ route('users.edit', $user->id) }}">
+            <i class="fas fa-pen"></i>
+          </a>
+          @endcan
+        </td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+</x-data>

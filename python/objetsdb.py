@@ -1,12 +1,15 @@
 from fun import DB, readCSV
 
-file = 'objets'
-file = 'equipements'
+# file = 'objets'
+# file = 'equipements'
 file = 'lines'
 
-entity_id = 1  # Detection radar
-type_id = 2  # event
-csv = readCSV(f'{file}_details')
+# entity_id = 1  # Detection radar
+entity_id = 4  # Traitement radar
+type_id = 1  # event
+type_id = 2  # line
+
+csv = readCSV(f'{file}_details_trait')
 db = DB('efdm')
 
 for item in csv:

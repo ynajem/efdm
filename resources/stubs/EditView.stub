@@ -1,0 +1,3 @@
+<x-form title="Update {{modelName}}" :action="route('{{modelNamePluralLowerCase}}.update',${{modelNameSingularLowerCase}})">
+  @method('put')
+</x-form>

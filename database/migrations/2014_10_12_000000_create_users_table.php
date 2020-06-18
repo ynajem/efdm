@@ -7,17 +7,13 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('entities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('label');
+            $table->timestamps();
         });
 
         Schema::create('users', function (Blueprint $table) {
@@ -28,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('title')->nullable();
             $table->date('dateHired')->nullable();
-            $table->foreignId('entity_id')->constrained();
+            $table->foreign('entity_id')->references('id')->on('entities')->onDelete('cascade');
             $table->integer('badge')->nullable();
             $table->string('phone')->nullable();
             $table->string('grade')->nullable();

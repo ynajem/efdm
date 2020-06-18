@@ -1,0 +1,100 @@
+objet,subobjet
+mise à jour,DBM
+mise à jour,RDCU-1
+mise à jour,RDCU-2
+mise à jour,SDP-1
+mise à jour,SDP-2
+mise à jour,FDP-1
+mise à jour,FDP-2
+mise à jour,SDDs
+mise à jour,DBM
+chaîne plan de vol ,FDP-1
+chaîne plan de vol ,FDP-2
+chaîne plan de vol ,FDD-1
+chaîne plan de vol ,FDD-2
+chaîne plan de vol ,AFTN-1
+chaîne plan de vol ,AFTN-2
+chaîne plan de vol ,Diffiseurs 
+chaîne Donnée Radar ,RDCU-1
+chaîne Donnée Radar ,RDCU-2
+chaîne Donnée Radar ,RDCU-3
+chaîne Donnée Radar ,SDP-1
+chaîne Donnée Radar ,SDP-2
+Visualisation ,CMD-1
+Visualisation ,CMD-2
+Visualisation ,FDD-1
+Visualisation ,FDD-2
+Visualisation ,SDD-1
+Visualisation ,SDD-2
+Visualisation ,SDD-3
+Visualisation ,SDD-4
+Visualisation ,SDD-5
+Visualisation ,SDD-6
+Visualisation ,SDD-7
+Visualisation ,SDD-8
+Visualisation ,SDD-9
+Visualisation ,SDD-10
+Visualisation ,SDD-11
+Visualisation ,SDD-12
+Visualisation ,SDD-13
+Visualisation ,SDD-14
+Visualisation ,SDD-15
+Visualisation ,SDD-16
+Visualisation ,SDD-17
+Visualisation ,SDD-18
+Visualisation ,SDD-19
+Visualisation ,SDD-20
+Visualisation ,SDD-21
+Visualisation ,SDD-22
+Visualisation ,SDD-23
+Visualisation ,SDD-24
+Visualisation ,SDD-25
+Visualisation ,SDD-26
+Visualisation ,SDD-27
+Visualisation ,SDD-28
+Visualisation ,SDD-29
+Réseau et NTP ,Switch LAN-1
+Réseau et NTP ,Switch LAN-2
+Réseau et NTP ,Switch LAN-3
+Réseau et NTP ,Switch-1 IP From Détection 
+Réseau et NTP ,Switch-2 IP From Détection 
+Réseau et NTP ,Switch from-to DMB & Sim 
+Réseau et NTP ,NTP-1
+Réseau et NTP ,NTP-2
+Réseau et NTP ,Entry Nœud -A
+Réseau et NTP ,Entry Nœud -B
+Réseau et NTP ,FMTP-FDP 
+Les lignes Radar,Agadir
+Les lignes Radar,Agadir-2
+Les lignes Radar,CasaCRD
+Les lignes Radar,CasaNG
+Les lignes Radar,Foia 
+Les lignes Radar,Safi-1
+Les lignes Radar,Safi-2
+Les lignes Radar,Ifrane
+Les lignes Radar,Ifrane-2
+Les lignes Radar,Fes
+Les lignes Radar,Marrakech
+Les lignes Radar,Oujda
+Les lignes Radar,Tantan
+Les lignes Radar,EL jadida
+Les lignes Radar,Tanger
+Les lignes Radar,ADS-Oujda
+Les lignes OLDI,Canaries 
+Les lignes OLDI,Seville
+Les lignes OLDI,APP AGADIR 
+Archivage et reproduction ,DRF-1 Tape -1
+Archivage et reproduction ,DRF-1 Tape -2
+Archivage et reproduction ,DRF-2 Tape - 1
+Archivage et reproduction ,DRF-2 Tape - 2
+Archivage et reproduction ,FDP-aftns
+Archivage et reproduction ,FDP-aftn_database
+Archivage et reproduction ,FDP-historical
+Archivage et reproduction ,FDP-oldis
+Archivage et reproduction ,FDP-record
+Archivage et reproduction ,FDP - ACB 
+Archivage et reproduction ,FDP -FPL 
+Archivage et reproduction ,CMD - dir_history 
+Environnement et Energie ,UPS -1 
+Environnement et Energie ,UPS -2
+Environnement et Energie ,AIRCONDITIONNAL 

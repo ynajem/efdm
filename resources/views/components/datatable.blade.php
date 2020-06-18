@@ -30,12 +30,12 @@
 <script src="/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="/plugins/datatables/dataTables.buttons.min.js"></script>
 <script src="/plugins/datatables/jszip.min.js"></script>
-<script src="/plugins/datatables/vfs_fonts.js"></script>
 <script src="/plugins/datatables/buttons.html5.min.js"></script>
 <script src="/plugins/datatables/buttons.print.min.js"></script>
 <script src="/plugins/datatables/buttons.colVis.min.js"></script>
 <script src="/plugins/datatables/buttons.bootstrap4.js"></script>
 <script src="/plugins/datatables/pdfmake.min.js"></script>
+<script src="/plugins/datatables/vfs_fonts.js"></script>
 <script type="text/javascript" src="/js/moment.min.js"></script>
 <script type="text/javascript" src="/js/daterangepicker.min.js"></script>
 <script type="text/javascript" src="/js/daterangepicker-defaults.js"></script>

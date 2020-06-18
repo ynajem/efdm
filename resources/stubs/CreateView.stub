@@ -1,0 +1,3 @@
+<x-form title="Create New {{modelName}}" :action="route('{{modelNamePluralLowerCase}}.store')">
+
+</x-form>
