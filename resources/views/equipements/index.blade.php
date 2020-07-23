@@ -20,17 +20,17 @@
     @foreach ($equipements as $equipement)
     <tr>
       <td class="text-center">
-        {{ $equipement->subobjet->objet->name }}<br />
+        {{ $equipement->objet->name }}<br />
         {{ $equipement->subobjet->name }}
       </td>
       <td class="text-center">
-        {{ h_m($equipement->starttime) }}<br />
-        <small>{{ day($equipement->startdate) }}</small>
+        {{ $equipement->start_time->format("H:i") }}<br />
+        <small>{{ $equipement->start_time->format("d-m-Y") }}</small>
       </td>
       <td class="text-center">
-        @if($equipement->status == 'closed')
-        {{ h_m($equipement->endtime) }}<br />
-        <small>{{ day($equipement->enddate) }}</small>
+        @if($equipement->end_time)
+        {{ $equipement->end_time->format("H:i") }}<br />
+        <small>{{ $equipement->end_time->format("d-m-Y") }}</small>
         @else
         -----
         @endif
@@ -47,11 +47,11 @@
         </span>
       </td>
       <td class="text-center">
-        @if($equipement->status != 'closed')
+        @unless($equipement->end_time)
         <a class="btn btn-success btn-sm" href="{{ route('equipements.show',$equipement) }}" title="Mise en service">
           <i class="fas fa-check-circle"></i>
         </a>
-        @endif
+        @endunless
         <a class="btn btn-info btn-sm" href="{{ route('equipements.edit',$equipement) }}" title="Modifier">
           <i class="fas fa-pencil-alt"></i>
         </a>

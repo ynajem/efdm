@@ -7,22 +7,24 @@
 
   <thead class="">
     <tr>
-      <th class="text-center" style="width:200px">Objet</th>
-      <th class="text-center" style="width:100px">Debut</th>
-      <th class="text-center" style="width:100px">Fin</th>
+      <th class="text-center" width="150">Entité</th>
+      <th class="text-center" width="200">Objet</th>
+      <th class="text-center" width="100">Debut</th>
+      <th class="text-center" width="100">Fin</th>
       <th>Commentaire</th>
-      <th class="text-center" style="width:100px">Créé par</th>
+      <th class="text-center" width="100">Créé par</th>
     </tr>
   </thead>
 
   <tbody>
     @foreach ($lines as $line)
     <tr>
-      <td class="text-center">{{ $line->subobjet->objet->name }}<br />{{ $line->subobjet->name }}</td>
-      <td class="text-center">{{ date('H:i', strtotime($line->starttime)) }}<br /><small>{{ date('d-m-Y', strtotime($line->startdate)) }}</small></td>
+      <td>{{ $line->entity->label }}</td>
+      <td class="text-center">{{ $line->objet->name }}<br />{{ $line->subobjet->name }}</td>
+      <td class="text-center">{{ $line->start_time->format("H:i") }}<br /><small>{{ $line->start_time->format("d-m-Y") }}</small></td>
       <td class="text-center">
         @if($line->status == 'closed')
-        {{ date('H:i', strtotime($line->endtime)) }}<br /><small>{{ date('d-m-Y', strtotime($line->enddate)) }}</small>
+        {{ $line->end_time->format("H:i") }}<br /><small>{{ $line->end_time->format("d-m-Y") }}</small>
         @else
         -----
         @endif

@@ -2,91 +2,73 @@
 
 namespace App\Http\Controllers;
 
-use App\Line;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreLineRequest;
+use App\Http\Requests\UpdateLineRequest;
 use Illuminate\Support\Carbon;
+use App\Line;
 
 class LineController extends Controller
 {
-    private $types = ['corr' => 'Corrective', 'prev' => 'Preventive'];
-
     public function index()
     {
-        $lines = Auth::user()->entity->lines();
-        if ($status = request('status')) $lines = $lines->where('status', $status);
-        return view('lines.index', [
-            'lines' => $lines->paginate(10)
-        ]);
+        $lines = entity()->lines();
+        if (request('status') == 'live') $lines = $lines->whereNull('end_time');
+        $lines = $lines->paginate(10);
+
+        return view('lines.index', compact('lines'));
     }
 
 
     public function create()
     {
-        $entity = auth()->user()->entity;
-        $objets = $entity->objets->where('type_id', 2);
-        return view('lines.create', [
-            'types' => $this->types,
-            'objets' => $objets->pluck('name', 'id'),
-            'subobjets' => $objets->first()->subobjets->pluck('name', 'id'),
-            'status' => 'ready'
-        ]);
+        $objets = entity()->objets->where('type_id', 2); /* Select Lines */
+        $subobjets = $objets->first()->subobjets->pluck('name', 'id'); /* Select the first element for select input */
+        $objets = $objets->pluck('name', 'id');
+
+        return view('lines.create', compact('objets', 'subobjets'));
     }
 
 
-    public function store(Request $request)
+    public function store(StoreLineRequest $request)
     {
-        $user = Auth::user();
-        $data = request(['startdate', 'starttime', 'comment', 'subobjet_id', 'type']);
-        $data['shift'] = getShift($request->starttime);
+        $user = me();
+        $data = $request->only(['comment', 'subobjet_id', 'type', 'objet_id']);
         $data['user_id'] = $user->id;
         $data['entity_id'] = $user->entity_id;
-
+        $data['start_time'] = "{$request['startdate']} {$request['starttime']}";
         Line::create($data);
+
         return redirect()->route('lines.index');
     }
 
     public function show(Line $line)
     {
-        $entity = auth()->user()->entity;
-        $objets = $entity->objets->where('type_id', 2);
-        $dobjet = $line->subobjet->objet->id;
-        return view('lines.close', [
-            'types' => $this->types,
-            'objets' => $objets->pluck('name', 'id'),
-            'subobjets' => $objets->find($dobjet)->subobjets->pluck('name', 'id'),
-            'line' => $line,
-            'status' => 'closed'
-        ]);
+        $objets = entity()->objets->where('type_id', 2)->pluck('name', 'id');
+        $subobjets = $line->objet->subobjets->pluck('name', 'id');
+
+        return view('lines.close', compact('line', 'objets', 'subobjets'));
     }
 
 
     public function edit(Line $line)
     {
-        $entity = auth()->user()->entity;
-        $objets = $entity->objets->where('type_id', 2);
-        $dobjet = $line->subobjet->objet->id;
-        return view('lines.edit', [
-            'types' => $this->types,
-            'objets' => $objets->pluck('name', 'id'),
-            'subobjets' => $objets->find($dobjet)->subobjets->pluck('name', 'id'),
-            'line' => $line,
-            'status' => $line->status
-        ]);
+        $objets = entity()->objets->where('type_id', 2)->pluck('name', 'id');
+        $subobjets = $line->objet->subobjets->pluck('name', 'id');
+
+        return view('lines.edit', compact('line', 'objets', 'subobjets'));
     }
 
-    public function update(Request $request, Line $line)
+    public function update(UpdateLineRequest $request, Line $line)
     {
-        $user = Auth::user();
-        $data = request(['startdate', 'starttime', 'comment', 'subobjet_id', 'type', 'endtime', 'enddate']);
-        $data['shift'] = getShift($request->starttime);
+        $user = me();
+        $data = $request->only(['comment', 'subobjet_id', 'type', 'objet_id']);
         $data['user_id'] = $user->id;
         $data['entity_id'] = $user->entity_id;
+        $data['start_time'] = Carbon::parse("{$request->startdate} {$request->starttime}");
 
         if (isset($request->endtime) and isset($request->enddate)) {
-            $start = Carbon::parse("{$request->startdate} {$request->starttime}");
-            $finish = Carbon::parse("{$request->enddate} {$request->endtime}");
-            $data['duration'] = $start->diffInMinutes($finish);
+            $data['end_time'] = Carbon::parse("{$request->enddate} {$request->endtime}");
+            $data['duration'] = $data['start_time']->diffInMinutes($data['end_time']);
             $data['status'] = 'closed';
         }
 

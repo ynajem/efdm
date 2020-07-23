@@ -14,6 +14,7 @@
     <span class="text-danger">{{ $errors->first('label') }}</span>
     @endif
   </div>
+
   <div class="form-group">
     <label for="abilities">Role Abilities</label>
     <select class="form-control select2 {{ $errors->has('abilities') ? 'is-invalid' : '' }}" name="abilities[]" id="abilities" multiple>
@@ -25,6 +26,19 @@
     <span class="text-danger">{{ $errors->first('abilities') }}</span>
     @endif
   </div>
+
+  <div class="form-group">
+    <label for="users">Role Users</label>
+    <select class="form-control select2 {{ $errors->has('users') ? 'is-invalid' : '' }}" name="users[]" id="users" multiple>
+      @foreach($users as $key => $value)
+      <option value="{{ $key }}" {{ (in_array($key, old('value', [])) || $role->users->contains($key)) ? 'selected' : '' }}>{{ $value }}</option>
+      @endforeach
+    </select>
+    @if($errors->has('users'))
+    <span class="text-danger">{{ $errors->first('users') }}</span>
+    @endif
+  </div>
+
 
   <button class="btn btn-danger" type="submit"> Add </button>
 </x-form>

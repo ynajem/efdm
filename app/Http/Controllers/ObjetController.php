@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreObjetRequest;
 use App\Objet;
 use App\Type;
+use Illuminate\Support\Facades\File;
+// use File;
 use Illuminate\Support\Facades\Gate;
 
 class ObjetController extends Controller
@@ -40,7 +42,14 @@ class ObjetController extends Controller
 
     public function edit(Objet $objet)
     {
-        return view('objets.edit', compact('objet'));
+        // $avatars = ['001.svg', '002.svg'];
+        $path = public_path('svg');
+        $files = File::files($path);
+        $avatars = [];
+        foreach ($files as $file) {
+            $avatars[] = pathinfo($file)['basename'];
+        }
+        return view('objets.edit', compact('objet', 'avatars'));
     }
 
     public function update(StoreObjetRequest $request, Objet $objet)

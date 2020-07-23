@@ -20,6 +20,14 @@ class UpdateUserRequest extends FormRequest
             'firstname' => ['required'],
             'lastname' => ['required'],
             'roles.*'   => ['integer'],
+            // 'avatar' => ''
         ];
+    }
+
+    public function validated()
+    {
+        $data = parent::all();
+        $data['avatar'] = "/svg/{$this->sex}_user.svg";
+        return $data;
     }
 }

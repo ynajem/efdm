@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    protected $guarded = ['abilities'];
+    protected $guarded = ['abilities', 'users'];
 
     public function abilities()
     {
@@ -16,5 +16,10 @@ class Role extends Model
     public function allowTo($ability)
     {
         $this->abilities()->save($ability);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

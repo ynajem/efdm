@@ -7,6 +7,8 @@ use App\Entity;
 use App\Role;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -47,8 +49,15 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update($request->all());
+        // return $request->validated();
+        $user->update($request->validated());
         $user->roles()->sync($request->input('roles', []));
         return redirect()->route('users.index');
+    }
+
+    public function import()
+    {
+        return Excel::toCollection(new UsersImport, resource_path("csv/users.xlsx"));
+        return redirect('/')->with('success', 'All good!');
     }
 }

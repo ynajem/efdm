@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function team()
     {
-        return $this->entity->users->pluck('username', 'id')->all();
+        return $this->entity->users->pluck('username', 'id');
     }
 
     public function shifts()
@@ -54,6 +54,11 @@ class User extends Authenticatable
     }
 
     public function fullname()
+    {
+        return "{$this->firstname} {$this->lastname}";
+    }
+
+    public function getFullnameAttribute()
     {
         return "{$this->firstname} {$this->lastname}";
     }

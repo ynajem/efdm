@@ -2,105 +2,148 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\Shift;
-use App\User;
+// use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ShiftController extends Controller
 {
-    public $periods = array(1 => "De 08 h à 14 h", 2 => "De 14 h à 21 h", 3 => "De 21 h à 08 h");
-    public $equips = array("A" => 'A', "B" => 'B', "C" => 'C', "D" => 'D', "E" => 'E');
-
     public function index()
     {
-        $user = auth()->user();
-        return view('shifts.index', [
-            'period' => $this->periods,
-            'shifts' => $user->entity->shifts()->paginate(10),
-        ]);
+        $shifts = entity()->shifts()->paginate(10);
+
+        return view('shifts.index', compact('shifts'));
+    }
+
+    /* Calculate start and end time for each shift */
+    public function getTimes($date, $shift)
+    {
+        $date = Carbon::parse($date);
+        $shift_times = [
+            1 => ['start' => '8 hours', 'end' => '13 hours 59 minutes'],
+            2 => ['start' => '14 hours', 'end' => '20 hours 59 minutes'],
+            3 => ['start' => '21 hours', 'end' => '31 hours 59 minutes']
+        ];
+        return [
+            'start_time' => $date->copy()->add($shift_times[$shift]['start']),
+            'end_time' => $date->copy()->add($shift_times[$shift]['end'])
+        ];
     }
 
 
     public function create()
     {
-        $user = auth()->user();
+        $supervisors = Role::firstWhere('name', 'supervisor')->users()->pluck('username', 'id');
+        $chefSalles = Role::firstWhere('name', 'chef_salle')->users()->pluck('username', 'id');
 
-        return view('shifts.create', [
-            'equips' => $this->equips,
-            'shifts' => $this->periods,
-            'users' => $user->team(),
-            'user' => $user,
-            'supervisors' => User::where('title', 'Superviseur')->pluck('username', 'id'),
-            'chefSalles' => User::where('title', 'Chef de salle')->pluck('username', 'id')
-        ]);
+        return view('shifts.create', compact('supervisors', 'chefSalles'));
     }
 
     public function store(Request $data)
     {
-        $user = auth()->user();
-
+        $user = me();
+        $times = $this->getTimes($data['date'], $data['shift']);
         $exist = Shift::where([
-            ['date',  $data['date']],
-            ['shift',  $data['shift']],
-            ['entity_id',  $user->entity->id],
+            ['start_time',  $times['start_time']],
+            ['entity_id',  $user->entity_id],
         ]);
 
         if ($exist->first()) {
-            return back()->with('message', 'Il y\'a une autre enregistremt pour cette vacation.');
+            return back()->with('error', 'Il y\'a une autre enregistremt pour cette vacation.');
+        }
+
+        $team = $user->team();
+        $users = $this->getUsers($data, $team);
+
+        if (empty($users)) {
+            return back()->with('error', 'Veuillez vérifier les membres de cette équipe');
         }
 
         $shift = Shift::create([
-            'date' => $data['date'],
+            'start_time' => $times['start_time'],
+            'end_time' => $times['end_time'],
             'shift' => $data['shift'],
-            'entity_id' => $user->entity->id,
+            'entity_id' => $user->entity_id,
             'equipe' => $data['equipe'],
             'chefSalle' => $data['chefSalle'],
             'supervisor' => $data['supervisor'],
             'addedby' => $user->id
         ]);
 
-        $team = $user->team();
-        $users = $this->getUsers($data, $team);
         $shift->users()->sync($users);
         return redirect(route('shifts.index'));
     }
 
     public function show(Shift $shift)
     {
-        $shifts = Shift::where('date', $shift->date)->where('shift', $shift->shift)->get();
-        return view('shifts.show', [
-            'shift' => $shift,
-            'period' => $this->periods,
-            'shifts' => $shifts
-        ]);
+        if ($shift->entity_id != me()->entity_id) {
+            abort(403);
+        }
+
+        $entity = me()->entity;
+        $date = $shift->date;
+        $shift_number = $shift->shift;
+
+        $events = $entity->events()
+            ->whereBetween('time', [$shift->start_time, $shift->end_time])->get();
+
+        global $start;
+        $start = $shift->start_time;
+
+        $lines = $entity->lines()
+            ->where('start_time', '<', $shift->end_time)
+            ->where(function ($query) {
+                global $start;
+                $query->where('end_time', '>', $start)->orWhereNull('end_time');
+            })->get()->load('subobjet', 'user', 'objet');
+
+        $equipements = $entity->equipements()
+            ->where('start_time', '<', $shift->end_time)
+            ->where(function ($query) {
+                global $start;
+                $query->where('end_time', '>', $start)->orWhereNull('end_time');
+            })->get()->load('subobjet', 'user', 'objet');
+
+        $shifts = Shift::where('start_time', $shift->start_time)->get();
+
+        return view('shifts.show', compact('events', 'lines', 'equipements', 'shifts', 'shift'));
     }
 
     public function edit(Shift $shift)
     {
-        $user = auth()->user();
+        if ($shift->entity_id != me()->entity_id) {
+            abort(403);
+        }
 
-        return view('shifts.edit', [
-            'equips' => $this->equips,
-            'shifts' => $this->periods,
-            'shift' => $shift,
-            'users' => $user->team(),
-            'chef' => $shift->users()->where('role', 'chefE')->first()->id,
-            'supervisors' => User::where('title', 'Superviseur')->pluck('username', 'id'),
-            'chefSalles' => User::where('title', 'Chef de salle')->pluck('username', 'id')
-        ]);
+        $supervisors = Role::firstWhere('name', 'supervisor')->users()->pluck('username', 'id');
+        $chefSalles = Role::firstWhere('name', 'chef_salle')->users()->pluck('username', 'id');
+
+        return view('shifts.edit', compact('shift', 'supervisors', 'chefSalles'));
     }
 
     public function update(Request $data, Shift $shift)
     {
-        $user = Auth::user();
+        $user = me();
 
         if ($shift->entity_id != $user->entity_id) {
             abort(404);
         }
 
+        $times = $this->getTimes($data['date'], $data['shift']);
+
+        $team = $user->team();
+        $users = $this->getUsers($data, $team);
+
+        if (empty($users)) {
+            return back()->with('error', 'Veuillez vérifier les membres de cette équipe');
+        }
+
         $shift->update([
-            'date' => $data['date'],
+            'start_time' => $times['start_time'],
+            'end_time' => $times['end_time'],
             'shift' => $data['shift'],
             'entity_id' => $user->entity->id,
             'equipe' => $data['equipe'],
@@ -109,8 +152,6 @@ class ShiftController extends Controller
             'addedby' => $user->id
         ]);
 
-        $team = $user->team();
-        $users = $this->getUsers($data, $team);
         $shift->users()->sync($users);
         return redirect(route('shifts.index'));
     }
@@ -126,15 +167,15 @@ class ShiftController extends Controller
     {
         $users = [];
 
-        $chefS = $data['chefSalle'];
-        $super = $data['supervisor'];
+        $chefSalle = $data['chefSalle'];
+        $supervisor = $data['supervisor'];
 
-        if (array_key_exists($chefS, $team)) {
-            $users[$chefS] = ['role' => 'chefS'];
+        if ($team->keys()->contains($chefSalle)) {
+            $users[$chefSalle] = ['role' => 'chefS'];
         }
 
-        if (array_key_exists($super, $team)) {
-            $users[$super] = ['role' => 'super'];
+        if ($team->keys()->contains($supervisor)) {
+            $users[$supervisor] = ['role' => 'super'];
         }
 
         if ($data['chefEquipe']) {

@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary">
   <!-- Brand Logo -->
   <a href="/" class="brand-link text-center">
-    <span><b>EFDM v0.1.3 beta</b></span>
+    <span><b>{{ config('app.name') }}</b></span>
   </a>
 
   <!-- Sidebar -->
@@ -13,7 +13,7 @@
       </div>
       <div class="info">
         <a href="{{ route('profile.show') }}" class="d-block">
-          {{ me()->fullname() }}
+          {{ me()->fullname }}
         </a>
       </div>
     </div>
@@ -134,7 +134,7 @@
 
         <li class="nav-item has-treevie{{ request()->routeIs('equipements*') ? ' menu-open' : ''}}">
           <a href="#" class="nav-link{{ request()->routeIs('equipements*') ? ' active' : ''}}">
-            <i class="nav-icon fa fa-cogs"></i>
+            <i class="nav-icon fa fa-wrench"></i>
             <p> Equipements HS <i class="right fas fa-angle-left"></i> </p>
           </a>
           <ul class="nav nav-treeview">
@@ -159,29 +159,50 @@
           </ul>
         </li>
 
+        <li class="nav-item has-treevie{{ request()->routeIs('reports*') ? ' menu-open' : ''}}">
+          <a href="#" class="nav-link{{ request()->routeIs('reports*') ? ' active' : ''}}">
+            <i class="nav-icon fas fa-table"></i>
+            <p> Rapports et tableaux <i class="right fas fa-angle-left"></i> </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('reports.index') }}" class="nav-link{{ request()->routeIs('reports.index') ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Arrêts et coupures</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('reports.create') }}" class="nav-link{{ request()->routeIs('reports.create') ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Something</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
         @can('supervise')
         <li class="nav-item has-treevie{{ request()->routeIs('supervision*') ? ' menu-open' : ''}}">
           <a href="#" class="nav-link{{ request()->routeIs('supervision*') ? ' active' : ''}}">
-            <i class="nav-icon fa fa-ticket-alt"></i>
+            <i class="nav-icon fa fa-desktop"></i>
             <p> Supervision <i class="right fas fa-angle-left"></i> </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="{{ route('supervision.events') }}" class="nav-link{{ request()->routeIs('supervision.events') ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Les interventions</p>
+                <p>Interventions</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('supervision.equipements') }}" class="nav-link{{ request()->routeIs('supervision.equipements') ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Les equipements H.S</p>
+                <p>Equipements H.S</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('supervision.lines') }}" class="nav-link{{ request()->routeIs('supervision.lines') ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Les arrêts et les coupures</p>
+                <p>Arrêts et coupures</p>
               </a>
             </li>
           </ul>
@@ -191,14 +212,26 @@
         @can('edit_objects')
         <li class="nav-item has-treevie{{ request()->routeIs('*objets*') ? ' menu-open' : ''}}">
           <a href="#" class="nav-link{{ request()->routeIs('*objets*') ? ' active' : ''}}">
-            <i class="nav-icon fa fa-ticket-alt"></i>
+            <i class="nav-icon fa fa-cogs"></i>
             <p> Gestion des objets <i class="right fas fa-angle-left"></i> </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('objets.index') }}" class="nav-link{{ request()->routeIs('objets.*') ? ' active' : ''}}">
+              <a href="{{ route('objets.index') }}" class="nav-link{{ request()->routeIs('objets.index') ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Les objets</p>
+                <p>Intervention</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('objets.index'). "?type=3" }}" class="nav-link{{ request()->routeIs('objets.index'. "?type=3" ) ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Equipements HS</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('objets.index')."?type=2" }}" class="nav-link{{ request()->routeIs('objets.index'. "?type=2") ? ' active' : ''}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Arrêts et coupures</p>
               </a>
             </li>
             <li class="nav-item">

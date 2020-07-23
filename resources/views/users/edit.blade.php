@@ -40,16 +40,40 @@
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-8">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label class="required" for="password">Password</label>
+        <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="text" name="password" id="password" value="{{ old('password', '') }}">
+        @if($errors->has('password'))
+        <span class="text-danger">{{ $errors->first('password') }}</span>
+        @endif
+      </div>
+    </div>
+    <div class="col-md-4">
       <div class="form-group">
         <label for="title">Job Title</label>
-        <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}">
+        <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $user->title) }}">
         @if($errors->has('title'))
         <span class="text-danger">{{ $errors->first('title') }}</span>
         @endif
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
+      <div class="form-group">
+        <label class="required" for="sex">Sex</label>
+        <select class="form-control select2 {{ $errors->has('sex') ? 'is-invalid' : '' }}" name="sex" id="sex" required>
+          @foreach(APP\User::SEX_SELECT as $id => $label)
+          <option value="{{ $id }}" {{ $user->sex == $id ? 'selected' : '' }}>{{ $label }}</option>
+          @endforeach
+        </select>
+        @if($errors->has('sex'))
+        <span class="text-danger">{{ $errors->first('sex') }}</span>
+        @endif
+      </div>
+
+
+    </div>
+    <div class="col-md-2">
       <div class="form-group">
         <label class="required" for="status">Status</label>
         <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status" required>

@@ -15,7 +15,7 @@
 
       <div class="content-header">
         <div class="container-fluid mb-2">
-          <h1>@yield('title')</h1>
+          <h1><span class="fa fa-@yield('icon')"></span>@yield('title')</h1>
         </div>
       </div>
 

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Equipement;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreEquipementRequest;
+use App\Http\Requests\UpdateEquipementRequest;
 use Illuminate\Support\Carbon;
 
 class EquipementController extends Controller
@@ -13,80 +13,62 @@ class EquipementController extends Controller
 
     public function index()
     {
-        $equipements = Auth::user()->entity->equipements();
-        if ($status = request('status')) $equipements = $equipements->where('status', $status);
-        return view('equipements.index', [
-            'equipements' => $equipements->paginate(10)
-        ]);
-    }
+        $equipements = entity()->equipements();
+        if (request('status') == 'live') $equipements = $equipements->whereNull('end_time');
+        $equipements = $equipements->paginate(10);
 
+        return view('equipements.index', compact('equipements'));
+    }
 
     public function create()
     {
-        $entity = auth()->user()->entity;
-        $objets = $entity->objets->where('type_id', 3);
-        return view('equipements.create', [
-            'types' => $this->types,
-            'objets' => $objets->pluck('name', 'id'),
-            'subobjets' => $objets->first()->subobjets->pluck('name', 'id'),
-            'status' => 'ready'
-        ]);
+        $objets = entity()->objets->where('type_id', 3); /* Select Equipements */
+        $subobjets = $objets->first()->subobjets->pluck('name', 'id'); /* Select the first element for select input */
+        $objets = $objets->pluck('name', 'id');
+
+        return view('equipements.create', compact('objets', 'subobjets'));
     }
 
-
-    public function store(Request $request)
+    public function store(StoreEquipementRequest $request)
     {
-        $user = Auth::user();
-        $data = request(['startdate', 'starttime', 'comment', 'subobjet_id', 'equipement']);
-        $data['shift'] = getShift($request->starttime);
+        $user = me();
+        $data = $request->only(['comment', 'subobjet_id', 'type', 'objet_id', 'equipement']);
         $data['user_id'] = $user->id;
         $data['entity_id'] = $user->entity_id;
+        $data['start_time'] = "{$request['startdate']} {$request['starttime']}";
+        Equipement::create($data);
 
-        equipement::create($data);
         return redirect()->route('equipements.index');
     }
 
     public function show(Equipement $equipement)
     {
-        $entity = auth()->user()->entity;
-        $objets = $entity->objets->where('type_id', 3);
-        $dobjet = $equipement->subobjet->objet->id;
-        return view('equipements.close', [
-            'types' => $this->types,
-            'objets' => $objets->pluck('name', 'id'),
-            'subobjets' => $objets->find($dobjet)->subobjets->pluck('name', 'id'),
-            'equipement' => $equipement,
-            'status' => 'closed'
-        ]);
+        $objets = entity()->objets->where('type_id', 3)->pluck('name', 'id');
+        $subobjets = $equipement->objet->subobjets->pluck('name', 'id');
+
+        return view('equipements.close', compact('equipement', 'objets', 'subobjets'));
     }
 
 
     public function edit(Equipement $equipement)
     {
-        $entity = auth()->user()->entity;
-        $objets = $entity->objets->where('type_id', 3);
-        $dobjet = $equipement->subobjet->objet->id;
-        return view('equipements.edit', [
-            'types' => $this->types,
-            'objets' => $objets->pluck('name', 'id'),
-            'subobjets' => $objets->find($dobjet)->subobjets->pluck('name', 'id'),
-            'equipement' => $equipement,
-            'status' => $equipement->status
-        ]);
+        $objets = entity()->objets->where('type_id', 3)->pluck('name', 'id');
+        $subobjets = $equipement->objet->subobjets->pluck('name', 'id');
+
+        return view('equipements.edit', compact('equipement', 'objets', 'subobjets'));
     }
 
-    public function update(Request $request, equipement $equipement)
+    public function update(UpdateEquipementRequest $request, equipement $equipement)
     {
-        $user = Auth::user();
-        $data = request(['startdate', 'starttime', 'comment', 'subobjet_id', 'equipement', 'endtime', 'enddate']);
-        $data['shift'] = getShift($request->starttime);
+        $user = me();
+        $data = $request->only(['comment', 'subobjet_id', 'type', 'objet_id', 'equipement']);
         $data['user_id'] = $user->id;
         $data['entity_id'] = $user->entity_id;
+        $data['start_time'] = Carbon::parse("{$request->startdate} {$request->starttime}");
 
         if (isset($request->endtime) and isset($request->enddate)) {
-            $start = Carbon::parse("{$request->startdate} {$request->starttime}");
-            $finish = Carbon::parse("{$request->enddate} {$request->endtime}");
-            $data['duration'] = $start->diffInMinutes($finish);
+            $data['end_time'] = Carbon::parse("{$request->enddate} {$request->endtime}");
+            $data['duration'] = $data['start_time']->diffInMinutes($data['end_time']);
             $data['status'] = 'closed';
         }
 

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 Route::resource('builder', 'BuilderController');
 
 Route::middleware('auth')->group(function () {
-    Route::view('/', 'home')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
 
     Route::resource('shifts', 'ShiftController');
 
@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('password', 'ProfileController@password')->name('profile.password');
     Route::put('password', 'ProfileController@passUpdate')->name('profile.passUpdate');
 
-    Route::middleware('can:view_events')->prefix('supervision')->group(function () {
+    Route::middleware('can:supervise')->prefix('supervision')->group(function () {
         Route::get('events', 'SupervisionController@events')->name('supervision.events');
         Route::get('lines', 'SupervisionController@lines')->name('supervision.lines');
         Route::get('equipements', 'SupervisionController@equipements')->name('supervision.equipements');
@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('objets', 'ObjetController');
     // Route::resource('subobjets', 'SubobjetController');
     Route::resource('objets.subobjets', 'SubobjetController');
+    Route::resource('reports', 'ReportController');
 });
 
 Route::middleware('can:admin')->prefix('admin')->group(function () {
@@ -49,6 +50,10 @@ Route::middleware('can:admin')->prefix('admin')->group(function () {
     Route::resource('roles', 'RolesController');
     // Abilities
     Route::resource('abilities', 'AbilityController');
+    Route::resource('cruds', 'CrudController');
+    Route::get("import", "ImportController@create")->name('import.create');
+    Route::post("import", "ImportController@parse")->name('import.parse');
+    Route::post("import/process", "ImportController@process")->name('import.process');
 });
 
 // Route::get('allusers', 'UsersController@datatable');
@@ -62,5 +67,9 @@ Route::get('/logout', function () {
 // Route::view('avatarr', 'profiles.avatar');
 // Route::view('test', 'test');
 Route::view('/reports/lines', 'reports.lines');
-Route::get('/reports/{objet}', 'ReportController@datatable');
+Route::get('/reports/data/{objet}', 'ReportController@datatable');
 Route::view('/lolo', 'login');
+Route::get("cmd", "TestController@command");
+Route::get("test", "TestController@factors");
+Route::view("icons", "pages.icons");
+Route::get("add", "ShiftController@add");

@@ -1,12 +1,13 @@
 window.start = moment().subtract(1, 'year');
 window.end = moment();
+title = $('title').text();
 
 function cb(start, end) {
   window.start = start;
   window.end = end;
   range = start.format('DD-MM-YYYY') + ' - ' + end.format('DD-MM-YYYY');
   $('#daterange span').html(range);
-  $('title').append(` [${range}]`);
+  $('title').text(`${title} [${range}]`);
   table.draw();
 }
 

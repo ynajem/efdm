@@ -8,7 +8,7 @@
         <th> Objet </th>
         <th> Entité </th>
         <th> Etat </th>
-        <th> Actions </th>
+        <th class="actions"> Actions </th>
       </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
         <td> {{ $objet->entity->label }} </td>
         <td> {{ $objet->status }} </td>
         <td>
-          <a class="btn btn-xs btn-primary" href="{{ route('objets.show', $objet) }}">
+          <a class="btn btn-xs btn-primary" href="{{ route('objets.subobjets.index',$objet) }}">
             <i class="fas fa-eye"></i>
           </a>
           <a class="btn btn-sm btn-success" href="{{ route('objets.edit', $objet) }}">

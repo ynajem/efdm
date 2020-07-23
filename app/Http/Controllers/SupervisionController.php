@@ -10,22 +10,19 @@ class SupervisionController extends Controller
 {
     public function events(Event $events)
     {
-        return view('supervision.events', [
-            'events' => $events->paginate(20)
-        ]);
+        $events = $events->latest('time')->paginate(20);
+        return view('supervision.events', compact('events'));
     }
 
     public function lines(Line $lines)
     {
-        return view('supervision.lines', [
-            'lines' => $lines->latest()->paginate(20)
-        ]);
+        $lines = $lines->latest('start_time')->paginate(20);
+        return view('supervision.lines', compact('lines'));
     }
 
     public function equipements(Equipement $equipements)
     {
-        return view('supervision.equipements', [
-            'equipements' => $equipements->latest()->paginate(20)
-        ]);
+        $equipements = $equipements->latest('start_time')->paginate(20);
+        return view('supervision.equipements', compact('equipements'));
     }
 }

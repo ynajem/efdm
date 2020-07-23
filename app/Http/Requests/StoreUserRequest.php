@@ -26,4 +26,11 @@ class StoreUserRequest extends FormRequest
             'sex' => ['required'],
         ];
     }
+
+    public function validated()
+    {
+        return array_merge($this->all(), [
+            'avatar' => "/svg/{$this->sex}_user.svg"
+        ]);
+    }
 }

@@ -20,7 +20,7 @@ class Entity extends Model
 
     public function shifts()
     {
-        return $this->hasMany(Shift::class)->latest('date')->latest('shift');
+        return $this->hasMany(Shift::class)->latest('start_time');
     }
 
     public function team()
@@ -30,16 +30,16 @@ class Entity extends Model
 
     public function events()
     {
-        return $this->hasMany(Event::class)->latest('date')->latest('time');
+        return $this->hasMany(Event::class)->latest('time');
     }
 
     public function lines()
     {
-        return $this->hasMany(Line::class)->latest('startdate')->latest('starttime');
+        return $this->hasMany(Line::class)->latest('start_time');
     }
 
     public function equipements()
     {
-        return $this->hasMany(Equipement::class)->latest('startdate')->latest('starttime');
+        return $this->hasMany(Equipement::class)->latest('start_time');
     }
 }

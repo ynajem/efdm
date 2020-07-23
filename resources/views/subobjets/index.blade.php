@@ -5,7 +5,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-2">
-          <img src="/svg/003.svg" width="100" alt="" />
+          <img src="/svg/{{ $objet->avatar }}" width="100" alt="" />
         </div>
         <div class="col-md-8">
           <dl class="row mb-0">

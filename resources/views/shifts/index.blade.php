@@ -19,8 +19,8 @@
     <tr>
       <td> {{ $shift->equipe }} </td>
       <td>
-        <a> {{ $shift->date }} </a> <br>
-        <small> {{ $period[$shift->shift] }} </small>
+        <a> {{ $shift->start_time->format("d/m/Y")}} </a> <br>
+        <small> {{ $shift::SHIFT_SELECT[$shift->shift] }} </small>
       </td>
       <td>
         @foreach ($shift->team() as $esa)
@@ -33,7 +33,9 @@
       <td class="project-actions text-center">
         <a class="btn btn-primary btn-sm" href="{{ route('shifts.show',$shift->id) }}"> <i class="fas fa-folder"> </i> </a>
         <a class="btn btn-info btn-sm" href="{{ route('shifts.edit',$shift->id) }}"> <i class="fas fa-pencil-alt"> </i> </a>
-        <a class="btn btn-danger btn-sm" href="#" onclick="deleteData({{$shift->id}});return false;"> <i class="fas fa-trash"> </i> </a>
+        <a class="btn btn-danger btn-sm" href="#" data-url="{{ route('shifts.destroy',$shift) }}" onclick="deleteData(this)" title="Supprimer">
+          <i class="fas fa-trash"></i>
+        </a>
       </td>
     </tr>
     @endforeach

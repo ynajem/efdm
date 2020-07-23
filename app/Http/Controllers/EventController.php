@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -12,8 +13,7 @@ class EventController extends Controller
     public function index()
     {
         return view('events.index', [
-            'events' => me()->entity->events()->paginate(20)
-            // 'events' => Event::latest('date')->paginate(10) //display all events
+            'events' => me()->entity()->first()->events()->paginate(20)
         ]);
     }
 
@@ -25,20 +25,23 @@ class EventController extends Controller
     public function create()
     {
         $entity = me()->entity;
-        $objets = $entity->objets()->where('type_id', 1);
-        return view('events.create', [
-            'types' => $this->types,
-            'objets' => $objets->pluck('name', 'id'),
-            'subobjets' => $objets->first()->subobjets->pluck('name', 'id')
-        ]);
+        $objets = $entity->objets()->where('type_id', 1)->get();
+        $types = $this->types;
+        $subobjets = $objets->first()->subobjets()->pluck('name', 'id');
+        $objets = $objets->pluck('name', 'id');
+        // return $objets;
+
+        return view('events.create', compact('types', 'objets', 'subobjets'));
     }
 
 
     public function store(Request $request)
     {
         $data = $this->validator($request);
+        // return $data;
         $user = me();
-        $data['shift'] = getShift($request->time);
+        $data['time'] = Carbon::parse("{$data['event_date']} {$data['event_time']}");
+        $data['shift'] = getShift($request->event_time);
         $data['user_id'] = $user->id;
         $data['entity_id'] = $user->entity_id;
 
@@ -50,7 +53,7 @@ class EventController extends Controller
 
     public function edit(Event $event)
     {
-        $this->authorize('update', $event);
+        // $this->authorize('update', $event);
         $entity = me()->entity;
         $objets = $entity->objets()->where('type_id', 1);
         $dobjet = $event->subobjet->objet->id;
@@ -66,10 +69,14 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         $data = $this->validator($request);
+
         $user = me();
-        $data['shift'] = getShift($request->time);
+        $data['shift'] = getShift($request->event_time);
         $data['user_id'] = $user->id;
         $data['entity_id'] = $user->entity_id;
+        // $data['time'] = Carbon::parse("{$data['event_date']} {$data['event_time']}");
+        $data['time'] = "{$data['event_date']} {$data['event_time']}";
+        // return $data['time'];
 
         $event->update($data);
         return redirect()->route('events.index');
@@ -86,12 +93,13 @@ class EventController extends Controller
     {
         return $request->validate(
             [
-                'date' => ['required', 'date'],
-                'time' => ['required', 'date_format:H:i'],
+                'event_date' => ['required', 'date_format:Y-m-d'],
+                'event_time' => ['required', 'date_format:H:i'],
                 'event' => ['required'],
                 'type' => ['string'],
                 'extra' => ['string', 'nullable'],
-                'subobjet_id' => ['required', 'integer']
+                'subobjet_id' => ['required', 'integer'],
+                'objet_id' => ['required', 'integer']
             ],
             [
                 'event.required' => "Veuillez ajouter une intervention.",

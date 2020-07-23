@@ -44,7 +44,7 @@ class ProfileController extends Controller
 
         $user = User::find(auth()->id());
         $user->update([
-            'password' => Hash::make($request->password)
+            'password' => $request->password
         ]);
 
         return redirect()

@@ -38,7 +38,26 @@
 <script type="text/javascript" src="/js/daterangepicker.min.js"></script>
 <script type="text/javascript" src="/js/daterangepicker-defaults.js"></script>
 <script>
-  var table = $(".datatable").DataTable()
+  let table = $(".datatable").DataTable({
+    responsive: true
+  })
+  // var table = $('.datatable').DataTable({
+  //   buttons: [{
+  //     extend: 'print',
+  //     text: 'Print current page',
+  //     autoPrint: false,
+  //     exportOptions: {
+  //       columns: ':visible',
+  //     },
+  //     customize: function(win) {
+  //       $(win.document.body).find('table').addClass('display').css('font-size', '11pt');
+  //       $(win.document.body).find('tr:nth-child(odd) td').each(function(index) {
+  //         $(this).css('background-color', '#D0D0D0');
+  //       });
+  //       $(win.document.body).find('h1').css('text-align', 'center');
+  //     }
+  //   }]
+  // });
 
 </script>
 

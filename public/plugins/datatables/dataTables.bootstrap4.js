@@ -49,38 +49,54 @@
 			"<'row'<'col-sm-12 my-3'tr>>" +
 			"<'row'<'col-sm-12 col-md-5'l><'col-sm-12 col-md-7'p>>",
 		renderer: 'bootstrap',
-		lengthMenu: [5, 10, 15, 20, 50],
-		pageLength: 10,
+		lengthMenu: [5, 10, 15, 20, 50, 100],
+		pageLength: 20,
 		buttons: [
 			{ extend: 'colvis', text: '<i class="fas fa-cog text-info"></i> ', titleAttr: 'Sélectionner' },
 			{
 				extend: 'copyHtml5', text: '<i class="fas fa-copy"></i> Copier', titleAttr: 'Copier',
 				exportOptions: {
-					columns: ':visible'
+					columns: ':not(.actions):visible',
 				}
 			},
 			{
 				extend: 'excelHtml5', text: '<i class="fas fa-file-excel text-success"></i> Excel', titleAttr: 'Excel',
 				exportOptions: {
-					columns: ':visible'
+					columns: ':not(.actions):visible',
+					paging: false,
 				}
 			},
 			{
 				extend: 'csvHtml5', text: '<i class="fas fa-file-csv text-success"></i> CSV', titleAttr: 'CSV', exportOptions: {
-					columns: ':visible'
+					columns: ':not(.actions):visible',
+					paging: false,
 				}
 			},
 			{
 				extend: 'pdfHtml5', text: '<i class="fas fa-file-pdf text-danger"></i> PDF', titleAttr: 'PDF', exportOptions: {
-					columns: ':visible'
+					columns: ':not(.actions):visible',
+					paging: false,
 				}
 			},
 			{
-				extend: 'print', text: '<i class="fas fa-print text-primary"></i> Imprimer', titleAttr: 'Imprimer', exportOptions: {
-					columns: ':visible'
+				extend: 'print', text: '<i class="fas fa-print text-primary"></i> Imprimer', titleAttr: 'Imprimer',
+				exportOptions: {
+					// columns: ':visible',
+					columns: ':not(.actions):visible',
+					// stripHtml: false,
+					paging: false
+				},
+
+				customize: function (win) {
+					// $(win.document.body).find('table').addClass('display').css('font-size', '11pt');
+					// $(win.document.body).find('tr:nth-child(odd) td').each(function (index) {
+					// 	$(this).css('background-color', '#D0D0D0');
+					// });
+					$(win.document.body).find('h1').css('text-align', 'center').css('margin-bottom', '20px');
 				}
 			}
 		],
+
 		language: {
 			processing: "Traitement en cours...",
 			search: "Rechercher&nbsp;:",

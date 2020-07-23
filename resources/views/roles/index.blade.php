@@ -7,6 +7,7 @@
         <th> Name </th>
         <th> Description </th>
         <th> Abilities </th>
+        <th> Users </th>
         <th> Actions </th>
       </tr>
     </thead>
@@ -18,7 +19,12 @@
         <td> {{ $role->label ?? '' }} </td>
         <td>
           @foreach($role->abilities as $ability)
-          <span class="badge badge-primary">{{ $ability->name }}</span>
+          <span class="badge badge-danger">{{ $ability->name }}</span>
+          @endforeach
+        </td>
+        <td>
+          @foreach($role->users as $user)
+          <span class="badge badge-dark">{{ $user->username }}</span>
           @endforeach
         </td>
         <td>

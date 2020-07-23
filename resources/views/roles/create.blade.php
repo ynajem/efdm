@@ -28,6 +28,18 @@
     @endif
   </div>
 
+  <div class="form-group">
+    <label for="users">Role Users</label>
+    <select class="form-control select2 {{ $errors->has('users') ? 'is-invalid' : '' }}" name="users[]" id="users" multiple>
+      @foreach($users as $key => $value)
+      <option value="{{ $key }}" {{ in_array($key, old('label', [])) ? 'selected' : '' }}>{{ $value }}</option>
+      @endforeach
+    </select>
+    @if($errors->has('users'))
+    <span class="text-danger">{{ $errors->first('users') }}</span>
+    @endif
+  </div>
+
   <button type="submit" class="btn btn-danger">
     <span class="fa fa-plus mr-2"></span>Save
   </button>
