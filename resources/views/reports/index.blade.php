@@ -10,7 +10,7 @@
       @foreach($lines as $id => $line)
       <div class="col text-center">
         <a href="{{ route('reports.show',$line) }}">
-          <img src="/svg/{{ $line->id }}.svg" alt="{{ $line->name }}" width="64">
+          <img src="/svg/{{ $line->avatar }}" alt="{{ $line->name }}" width="64">
           <h6 class="mt-3">{{ $line->name }}</h6>
         </a>
       </div>

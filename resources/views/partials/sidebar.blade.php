@@ -171,12 +171,6 @@
                 <p>Arrêts et coupures</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="{{ route('reports.create') }}" class="nav-link{{ request()->routeIs('reports.create') ? ' active' : ''}}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Something</p>
-              </a>
-            </li>
           </ul>
         </li>
 
@@ -232,12 +226,6 @@
               <a href="{{ route('objets.index')."?type=2" }}" class="nav-link{{ request()->routeIs('objets.index'. "?type=2") ? ' active' : ''}}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Arrêts et coupures</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="" class="nav-link{{ request()->routeIs('subobjets.*') ? ' active' : ''}}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Les sous-objets</p>
               </a>
             </li>
           </ul>

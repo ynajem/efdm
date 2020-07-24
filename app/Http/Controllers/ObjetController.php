@@ -55,7 +55,8 @@ class ObjetController extends Controller
     public function update(StoreObjetRequest $request, Objet $objet)
     {
         $objet->update($request->all());
-        return redirect()->route('objets.index');
+        // return redirect()->route('objets.index');
+        return back();
     }
 
     public function show(Objet $objet)
