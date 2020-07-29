@@ -6,7 +6,7 @@
           <i class="fas fa-plus mr-2"></i>{{$button}}
         </a>
         <div class="ml-auto">
-          {!! $items->render() !!}
+          {!! $items->appends(request()->input())->links() !!}
         </div>
       </div>
       <div class="card-body p-0">

@@ -10,10 +10,17 @@ class EventController extends Controller
 {
     private $types = ['corr' => 'Corrective', 'prev' => 'Preventive', 'arch' => 'Archivage'];
 
-    public function index()
+    public function index(Request $request)
     {
+        $events = entity()->events();
+        if ($request->has('objet')) {
+            $events->where('objet_id', $request->objet);
+        }
+        if ($request->has('subobjet')) {
+            $events->where('subobjet_id', $request->subobjet);
+        }
         return view('events.index', [
-            'events' => me()->entity()->first()->events()->paginate(20)
+            'events' => $events->paginate(20)
         ]);
     }
 
